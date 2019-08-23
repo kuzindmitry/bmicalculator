@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		36EF627E2310519C004E5F15 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EF627C2310519C004E5F15 /* PageViewController.swift */; };
 		36EF627F2310519C004E5F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36EF627D2310519C004E5F15 /* Main.storyboard */; };
 		380CFA1F230FD7B3002EA2CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFA1E230FD7B3002EA2CC /* AppDelegate.swift */; };
 		380CFA26230FD7B4002EA2CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380CFA25230FD7B4002EA2CC /* Assets.xcassets */; };
@@ -18,10 +17,14 @@
 		380CFCFB23100165002EA2CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFCFA23100165002EA2CC /* User.swift */; };
 		380CFCFD2310016D002EA2CC /* DataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFCFC2310016D002EA2CC /* DataEntity.swift */; };
 		380CFD0123101D71002EA2CC /* WeightMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD0023101D71002EA2CC /* WeightMetric.swift */; };
+		380CFD0323106529002EA2CC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380CFD0223106529002EA2CC /* Onboarding.storyboard */; };
+		380CFD0523106535002EA2CC /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD0423106535002EA2CC /* Storyboard.swift */; };
+		380CFD07231065D7002EA2CC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD06231065D7002EA2CC /* OnboardingViewController.swift */; };
+		380CFD09231065EC002EA2CC /* OnboardingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD08231065EC002EA2CC /* OnboardingContentViewController.swift */; };
+		380CFD0C231069FF002EA2CC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD0B231069FF002EA2CC /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		36EF627C2310519C004E5F15 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		36EF627D2310519C004E5F15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		36EF62802310522E004E5F15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		380CFA1B230FD7B3002EA2CC /* BMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +38,11 @@
 		380CFCFA23100165002EA2CC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		380CFCFC2310016D002EA2CC /* DataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntity.swift; sourceTree = "<group>"; };
 		380CFD0023101D71002EA2CC /* WeightMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMetric.swift; sourceTree = "<group>"; };
+		380CFD0223106529002EA2CC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		380CFD0423106535002EA2CC /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		380CFD06231065D7002EA2CC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		380CFD08231065EC002EA2CC /* OnboardingContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentViewController.swift; sourceTree = "<group>"; };
+		380CFD0B231069FF002EA2CC /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +77,11 @@
 			isa = PBXGroup;
 			children = (
 				380CFA1E230FD7B3002EA2CC /* AppDelegate.swift */,
+				380CFD0423106535002EA2CC /* Storyboard.swift */,
 				36EF62802310522E004E5F15 /* ViewController.swift */,
 				36EF627D2310519C004E5F15 /* Main.storyboard */,
-				36EF627C2310519C004E5F15 /* PageViewController.swift */,
+				380CFD0B231069FF002EA2CC /* Storage.swift */,
+				380CFD0A231065F0002EA2CC /* Onboarding */,
 				380CFA25230FD7B4002EA2CC /* Assets.xcassets */,
 				380CFA27230FD7B4002EA2CC /* LaunchScreen.storyboard */,
 				380CFA2A230FD7B4002EA2CC /* Info.plist */,
@@ -106,6 +116,16 @@
 				380CFCFC2310016D002EA2CC /* DataEntity.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		380CFD0A231065F0002EA2CC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				380CFD0223106529002EA2CC /* Onboarding.storyboard */,
+				380CFD06231065D7002EA2CC /* OnboardingViewController.swift */,
+				380CFD08231065EC002EA2CC /* OnboardingContentViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				380CFA29230FD7B4002EA2CC /* LaunchScreen.storyboard in Resources */,
+				380CFD0323106529002EA2CC /* Onboarding.storyboard in Resources */,
 				36EF627F2310519C004E5F15 /* Main.storyboard in Resources */,
 				380CFA26230FD7B4002EA2CC /* Assets.xcassets in Resources */,
 				380CFA31230FD863002EA2CC /* README.md in Resources */,
@@ -180,12 +201,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36EF627E2310519C004E5F15 /* PageViewController.swift in Sources */,
+				380CFD0C231069FF002EA2CC /* Storage.swift in Sources */,
 				380CFD0123101D71002EA2CC /* WeightMetric.swift in Sources */,
 				380CFCF52310006E002EA2CC /* Database.swift in Sources */,
 				380CFCFD2310016D002EA2CC /* DataEntity.swift in Sources */,
+				380CFD0523106535002EA2CC /* Storyboard.swift in Sources */,
+				380CFD09231065EC002EA2CC /* OnboardingContentViewController.swift in Sources */,
 				380CFCF92310008B002EA2CC /* database.xcdatamodeld in Sources */,
 				380CFCFB23100165002EA2CC /* User.swift in Sources */,
+				380CFD07231065D7002EA2CC /* OnboardingViewController.swift in Sources */,
 				380CFA1F230FD7B3002EA2CC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
