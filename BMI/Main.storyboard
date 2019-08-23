@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cNd-dY-MNq">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Page View Controller-->
+        <scene sceneID="xbc-LP-zPQ">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="cNd-dY-MNq" customClass="PageViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJ1-O6-III" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-641" y="21"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TSv-vz-YZr">
+            <objects>
+                <viewController storyboardIdentifier="sbOne" id="GS1-qJ-Emi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Wg-Dc-Dh6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainPic" translatesAutoresizingMaskIntoConstraints="NO" id="UF9-Xq-0tx">
+                                <rect key="frame" x="-28" y="0.0" width="470" height="896"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="896" id="Hqh-E0-f69"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfY-pt-zpu">
+                                <rect key="frame" x="314" y="826" width="80" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Skip it   &gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App for tracking your Body Mass Index" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EC-8h-2od">
+                                <rect key="frame" x="10" y="602" width="394" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="YUy-aP-pNl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you ever thought about your Body Mass Index?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1O3-jB-XSu">
+                                <rect key="frame" x="20" y="665" width="376" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="106" id="fi1-0e-egJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1O3-jB-XSu" firstAttribute="top" secondItem="7EC-8h-2od" secondAttribute="bottom" constant="8" symbolic="YES" id="36m-EK-Myr"/>
+                            <constraint firstItem="1O3-jB-XSu" firstAttribute="leading" secondItem="4Wg-Dc-Dh6" secondAttribute="leadingMargin" id="4fy-MJ-ugU"/>
+                            <constraint firstItem="7EC-8h-2od" firstAttribute="centerX" secondItem="UF9-Xq-0tx" secondAttribute="centerX" id="72h-vr-CsD"/>
+                            <constraint firstItem="bfY-pt-zpu" firstAttribute="trailing" secondItem="4Wg-Dc-Dh6" secondAttribute="trailingMargin" id="ANT-IJ-jRD"/>
+                            <constraint firstItem="7EC-8h-2od" firstAttribute="leading" secondItem="CAi-KR-xrE" secondAttribute="leading" constant="10" id="bOG-ed-lj5"/>
+                            <constraint firstItem="bfY-pt-zpu" firstAttribute="bottom" secondItem="CAi-KR-xrE" secondAttribute="bottom" id="m6O-BW-wzL"/>
+                            <constraint firstItem="UF9-Xq-0tx" firstAttribute="top" secondItem="4Wg-Dc-Dh6" secondAttribute="top" id="mbG-hA-GBV"/>
+                            <constraint firstItem="7EC-8h-2od" firstAttribute="top" secondItem="CAi-KR-xrE" secondAttribute="top" constant="558" id="nwM-hy-28g"/>
+                            <constraint firstAttribute="trailing" secondItem="UF9-Xq-0tx" secondAttribute="trailing" constant="-28" id="ohe-lP-5l2"/>
+                            <constraint firstItem="UF9-Xq-0tx" firstAttribute="leading" secondItem="4Wg-Dc-Dh6" secondAttribute="leading" constant="-28" id="pS2-ZW-MKR"/>
+                            <constraint firstItem="CAi-KR-xrE" firstAttribute="trailing" secondItem="1O3-jB-XSu" secondAttribute="trailing" constant="18" id="uOo-vc-LtP"/>
+                            <constraint firstItem="bfY-pt-zpu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CAi-KR-xrE" secondAttribute="leading" symbolic="YES" id="zv7-fs-Sa0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CAi-KR-xrE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rp9-dN-5Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1407.2463768115942" y="744.64285714285711"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="s4H-Nf-osO">
+            <objects>
+                <viewController storyboardIdentifier="sbTwo" id="Fli-ja-Wgk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fdN-Qt-Ffz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainPic" translatesAutoresizingMaskIntoConstraints="NO" id="1z3-TZ-kBb">
+                                <rect key="frame" x="-28" y="0.0" width="470" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eq4-O7-RHR">
+                                <rect key="frame" x="314" y="826" width="80" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Skip it   &gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App for tracking your Body Mass Index" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puT-iE-DSR">
+                                <rect key="frame" x="36" y="599" width="334" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="nLk-oe-nhy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in your physical details and set personal goals on losing weight" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epp-qk-D5J">
+                                <rect key="frame" x="27" y="662" width="367" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="5Th-NO-te7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Epp-qk-D5J" firstAttribute="leading" secondItem="fdN-Qt-Ffz" secondAttribute="leadingMargin" constant="7" id="0VB-hz-poH"/>
+                            <constraint firstItem="Eq4-O7-RHR" firstAttribute="top" secondItem="Epp-qk-D5J" secondAttribute="bottom" constant="20" id="0qk-S0-7vN"/>
+                            <constraint firstItem="Epp-qk-D5J" firstAttribute="centerX" secondItem="1z3-TZ-kBb" secondAttribute="centerX" constant="3.5" id="1wd-Uc-jVX"/>
+                            <constraint firstAttribute="bottom" secondItem="1z3-TZ-kBb" secondAttribute="bottom" id="6I9-1E-4me"/>
+                            <constraint firstItem="Eq4-O7-RHR" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Epp-qk-D5J" secondAttribute="trailing" id="7Ib-Wk-EEA"/>
+                            <constraint firstItem="1z3-TZ-kBb" firstAttribute="leading" secondItem="fdN-Qt-Ffz" secondAttribute="leadingMargin" constant="-48" id="BjX-5g-6Fu"/>
+                            <constraint firstItem="1z3-TZ-kBb" firstAttribute="centerX" secondItem="fdN-Qt-Ffz" secondAttribute="centerX" id="FW5-E4-a8L"/>
+                            <constraint firstAttribute="bottom" secondItem="Epp-qk-D5J" secondAttribute="bottom" constant="90" id="PqU-IU-eqh"/>
+                            <constraint firstItem="Epp-qk-D5J" firstAttribute="top" secondItem="puT-iE-DSR" secondAttribute="bottom" constant="8" id="kQp-NL-D99"/>
+                            <constraint firstItem="Epp-qk-D5J" firstAttribute="centerX" secondItem="puT-iE-DSR" secondAttribute="centerX" constant="7.75" id="m2d-nO-9fW"/>
+                            <constraint firstItem="1z3-TZ-kBb" firstAttribute="top" secondItem="fdN-Qt-Ffz" secondAttribute="top" id="uR7-Zl-889"/>
+                            <constraint firstItem="Eq4-O7-RHR" firstAttribute="leading" secondItem="dqN-Wt-VEn" secondAttribute="leading" constant="314" id="ycj-AO-HNp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dqN-Wt-VEn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12p-LZ-Yyd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-642.02898550724638" y="744.64285714285711"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="sbThree" id="BYZ-38-t0r" customClass="ViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainPic" translatesAutoresizingMaskIntoConstraints="NO" id="Sbp-fP-cjB">
+                                <rect key="frame" x="-28" y="0.0" width="470" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-9e-gzX">
+                                <rect key="frame" x="314" y="826" width="80" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Skip it   &gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App for tracking your Body Mass Index" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wG5-UN-7O8">
+                                <rect key="frame" x="10" y="602" width="394" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="BF2-vy-yPy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See your timeline results in graphics" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS9-iD-g2c">
+                                <rect key="frame" x="28" y="665" width="366" height="98"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="98" id="gZl-qe-fj3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Sbp-fP-cjB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-48" id="6JB-Df-WEH"/>
+                            <constraint firstItem="Sbp-fP-cjB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Ok-J2-Pn9"/>
+                            <constraint firstItem="wG5-UN-7O8" firstAttribute="centerX" secondItem="Sbp-fP-cjB" secondAttribute="centerX" id="Ftz-ZU-9Wd"/>
+                            <constraint firstAttribute="bottom" secondItem="Sbp-fP-cjB" secondAttribute="bottom" id="LzI-Sn-dDd"/>
+                            <constraint firstItem="oS9-iD-g2c" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Shs-U0-TBS"/>
+                            <constraint firstItem="mLT-9e-gzX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="Wd3-mW-bwU"/>
+                            <constraint firstItem="oS9-iD-g2c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="abE-qi-sue"/>
+                            <constraint firstItem="wG5-UN-7O8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="558" id="apW-F0-cVM"/>
+                            <constraint firstItem="Sbp-fP-cjB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fib-e3-69f"/>
+                            <constraint firstItem="oS9-iD-g2c" firstAttribute="trailing" secondItem="mLT-9e-gzX" secondAttribute="trailing" id="hzp-mB-b9R"/>
+                            <constraint firstItem="oS9-iD-g2c" firstAttribute="top" secondItem="wG5-UN-7O8" secondAttribute="bottom" constant="8" symbolic="YES" id="ibF-dz-F1h"/>
+                            <constraint firstItem="mLT-9e-gzX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="pks-hK-xfA"/>
+                            <constraint firstItem="wG5-UN-7O8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zf0-pv-N8t"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="744.64285714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MainPic" width="659" height="1330"/>
+    </resources>
+</document>
