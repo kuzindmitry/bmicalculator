@@ -19,6 +19,7 @@ class OnboardingContentViewController: UIViewController {
         
         textLabel.text = item.text
         view.clipsToBounds = true
+        view.backgroundColor = .clear
     }
     
 }

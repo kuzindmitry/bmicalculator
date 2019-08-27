@@ -26,57 +26,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainPic" translatesAutoresizingMaskIntoConstraints="NO" id="cpp-22-57j">
-                                <rect key="frame" x="-28" y="0.0" width="470" height="896"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="896" id="glz-q4-JGz"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEf-tr-64Z">
-                                <rect key="frame" x="314" y="826" width="80" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Skip it   &gt;">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App for tracking your Body Mass Index" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-Gt-uAw">
-                                <rect key="frame" x="10" y="602" width="394" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="JuT-RJ-Nv5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you ever thought about your Body Mass Index?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSq-WX-7nf">
-                                <rect key="frame" x="20" y="665" width="376" height="106"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="106" id="mwH-Zf-KsV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C70-pg-4Iv">
+                                <rect key="frame" x="30" y="739" width="354" height="43"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ideal for the health conscious" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-8t-465">
+                                <rect key="frame" x="30" y="703" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.44705882352941173" green="0.56470588235294117" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OSq-WX-7nf" firstAttribute="top" secondItem="yPo-Gt-uAw" secondAttribute="bottom" constant="8" symbolic="YES" id="1gX-dZ-1ym"/>
-                            <constraint firstItem="cpp-22-57j" firstAttribute="top" secondItem="pMw-AC-8Pk" secondAttribute="top" id="8JS-np-fSO"/>
-                            <constraint firstItem="QEf-tr-64Z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zK6-d0-hnX" secondAttribute="leading" symbolic="YES" id="A7K-Hz-eo9"/>
-                            <constraint firstAttribute="trailing" secondItem="cpp-22-57j" secondAttribute="trailing" constant="-28" id="Hbk-Sy-uAC"/>
-                            <constraint firstItem="QEf-tr-64Z" firstAttribute="trailing" secondItem="pMw-AC-8Pk" secondAttribute="trailingMargin" id="JFJ-e5-a1c"/>
-                            <constraint firstItem="zK6-d0-hnX" firstAttribute="trailing" secondItem="OSq-WX-7nf" secondAttribute="trailing" constant="18" id="Kko-uE-1Fk"/>
-                            <constraint firstItem="yPo-Gt-uAw" firstAttribute="centerX" secondItem="cpp-22-57j" secondAttribute="centerX" id="RXg-Z3-FJZ"/>
-                            <constraint firstItem="yPo-Gt-uAw" firstAttribute="top" secondItem="zK6-d0-hnX" secondAttribute="top" constant="558" id="ZDa-c8-Cg6"/>
-                            <constraint firstItem="QEf-tr-64Z" firstAttribute="bottom" secondItem="zK6-d0-hnX" secondAttribute="bottom" id="i5U-xp-r2p"/>
-                            <constraint firstItem="OSq-WX-7nf" firstAttribute="leading" secondItem="pMw-AC-8Pk" secondAttribute="leadingMargin" id="i9Q-WD-ccL"/>
-                            <constraint firstItem="cpp-22-57j" firstAttribute="leading" secondItem="pMw-AC-8Pk" secondAttribute="leading" constant="-28" id="lBl-4I-lXD"/>
-                            <constraint firstItem="yPo-Gt-uAw" firstAttribute="leading" secondItem="zK6-d0-hnX" secondAttribute="leading" constant="10" id="q8A-Ad-cIT"/>
+                            <constraint firstItem="zK6-d0-hnX" firstAttribute="trailing" secondItem="C70-pg-4Iv" secondAttribute="trailing" constant="30" id="PyG-n2-q0P"/>
+                            <constraint firstItem="C70-pg-4Iv" firstAttribute="top" secondItem="yFF-8t-465" secondAttribute="bottom" constant="15" id="YXb-Dn-dHp"/>
+                            <constraint firstItem="zK6-d0-hnX" firstAttribute="trailing" secondItem="yFF-8t-465" secondAttribute="trailing" constant="30" id="cD5-ZU-8mm"/>
+                            <constraint firstItem="yFF-8t-465" firstAttribute="leading" secondItem="zK6-d0-hnX" secondAttribute="leading" constant="30" id="d2L-MX-u8Y"/>
+                            <constraint firstItem="C70-pg-4Iv" firstAttribute="leading" secondItem="zK6-d0-hnX" secondAttribute="leading" constant="30" id="ssg-4n-3y3"/>
+                            <constraint firstItem="zK6-d0-hnX" firstAttribute="bottom" secondItem="C70-pg-4Iv" secondAttribute="bottom" constant="80" id="vlD-4a-5zu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zK6-d0-hnX"/>
                     </view>
                     <connections>
-                        <outlet property="textLabel" destination="OSq-WX-7nf" id="0K8-DB-HWk"/>
+                        <outlet property="textLabel" destination="C70-pg-4Iv" id="PET-hQ-ASx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqg-MV-QYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -84,7 +59,4 @@
             <point key="canvasLocation" x="-1407.2463768115942" y="744.64285714285711"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="MainPic" width="659" height="1330"/>
-    </resources>
 </document>
