@@ -9,9 +9,15 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
+    
 
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         
         // Background image settings (coded in BackgroundImage.swift file)
@@ -47,14 +53,39 @@ class CalculatorViewController: UIViewController {
         
         
         // Adds Height, Goal and Age TextFields from functions initialized from extension below
+        
         createHeightTextField()
         createGoalTextField()
         createAgeTextField()
+        createSaveButton()
+    }
+    
+    @IBOutlet weak var WeightTextField: UITextField!
+    
+    @IBOutlet weak var weightMinusButton: UIButton!
+    
+    @IBOutlet weak var weightPlusButton: UIButton!
+    
+    @IBAction func weightTextFieldChanged(_ sender: Any) {
         
-        
-        
+    }
+    
+    @IBAction func weightMinusButtonPressed(_ sender: UIButton) {
+        //weightMinusButton.isSelected = true
+    }
+    
+    @IBAction func weightPlusButtonPressed(_ sender: UIButton) {
+        //weightPlusButton.isSelected = true
+    }
+    
+    @IBAction func maleButtonPressed(_ sender: UIButton) {
 
     }
+    
+    
+    @IBAction func femaleButtonPressed(_ sender: UIButton) {
+    }
+    
     
 }
 
@@ -100,38 +131,20 @@ extension CalculatorViewController {
         self.view.addSubview(ageTextField)
         
     }
+    
+
+    
+    func createSaveButton() {
+        let saveButton = UIButton (frame: CGRect(x: 20, y: 800, width: 370, height: 70))
+        saveButton.setTitle("Calculate your BMI", for: UIControl.State.normal)
+        saveButton.titleLabel?.font = UIFont.systemFont (ofSize: 27)
+        saveButton.backgroundColor = UIColor.init(red: 72.0/255.0, green: 138.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+        saveButton.setTitleColor(UIColor.white, for: UIControl.State())
+        saveButton.layer.cornerRadius = saveButton.frame.height/2
+        saveButton.layer.masksToBounds = true
+        self.view.addSubview(saveButton)
+        
+    }
 }
 
-class WeightField : UIView {
-    
-    let weightTextField = UITextField()
-    let weightMinusButton = UIButton()
-    let weightPlusButton = UIButton()
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func createWeightTextField() {
-        
-        let weightTextField = UITextField(frame: CGRect(x: 210, y: 500, width: 150, height: 80))
-        weightTextField.backgroundColor = UIColor.init(red: 47.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-        weightTextField.font = UIFont.systemFont(ofSize: 40)
-        weightTextField.textColor = UIColor.init(red: 114.0/255.0, green: 144.0/255.0, blue: 157.0/255.0, alpha: 1.0)
-        weightTextField.textAlignment = NSTextAlignment.center
-        weightTextField.borderStyle = UITextField.BorderStyle.none
-        weightTextField.layer.cornerRadius = 40
-        weightTextField.layer.masksToBounds = true
-        self.addSubview(weightTextField)
-    }
-    
-    func createWeightMinusButton() {
-        
-    }
 
-    func createWeightPlusButton() {
-        
-    }
-
-    
-    
-}

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		365896D2231551B700BB65EC /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365896D1231551B700BB65EC /* CalculatorViewController.swift */; };
 		365896D42317351400BB65EC /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365896D32317351400BB65EC /* BackgroundImage.swift */; };
+		365896DE231DA88E00BB65EC /* WeightField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365896DD231DA88E00BB65EC /* WeightField.swift */; };
 		36EF627F2310519C004E5F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36EF627D2310519C004E5F15 /* Main.storyboard */; };
 		380CFA1F230FD7B3002EA2CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFA1E230FD7B3002EA2CC /* AppDelegate.swift */; };
 		380CFA26230FD7B4002EA2CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380CFA25230FD7B4002EA2CC /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		365896D1231551B700BB65EC /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		365896D32317351400BB65EC /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		365896DD231DA88E00BB65EC /* WeightField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeightField.swift; path = ../../WeightField.swift; sourceTree = "<group>"; };
 		36EF627D2310519C004E5F15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		36EF62802310522E004E5F15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		380CFA1B230FD7B3002EA2CC /* BMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				380CFD06231065D7002EA2CC /* OnboardingViewController.swift */,
 				380CFD08231065EC002EA2CC /* OnboardingContentViewController.swift */,
 				365896D1231551B700BB65EC /* CalculatorViewController.swift */,
+				365896DD231DA88E00BB65EC /* WeightField.swift */,
 				365896D32317351400BB65EC /* BackgroundImage.swift */,
 			);
 			path = Onboarding;
@@ -213,6 +216,7 @@
 				365896D42317351400BB65EC /* BackgroundImage.swift in Sources */,
 				380CFCF52310006E002EA2CC /* Database.swift in Sources */,
 				380CFCFD2310016D002EA2CC /* DataEntity.swift in Sources */,
+				365896DE231DA88E00BB65EC /* WeightField.swift in Sources */,
 				380CFD0523106535002EA2CC /* Storyboard.swift in Sources */,
 				380CFD09231065EC002EA2CC /* OnboardingContentViewController.swift in Sources */,
 				380CFCF92310008B002EA2CC /* database.xcdatamodeld in Sources */,
