@@ -25,14 +25,17 @@
 		380CFD07231065D7002EA2CC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD06231065D7002EA2CC /* OnboardingViewController.swift */; };
 		380CFD09231065EC002EA2CC /* OnboardingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD08231065EC002EA2CC /* OnboardingContentViewController.swift */; };
 		380CFD0C231069FF002EA2CC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD0B231069FF002EA2CC /* Storage.swift */; };
+		38F88D3D2315284E001DC19E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F88D3C2315284E001DC19E /* MainViewController.swift */; };
+		38F88D3F23152887001DC19E /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F88D3E23152887001DC19E /* ChartView.swift */; };
+		38F88D4123152A35001DC19E /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F88D4023152A35001DC19E /* DotCALayer.swift */; };
+		38F88D4323152A59001DC19E /* CurveAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F88D4223152A58001DC19E /* CurveAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		365896D1231551B700BB65EC /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		365896D32317351400BB65EC /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
-		365896DD231DA88E00BB65EC /* WeightField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeightField.swift; path = ../../WeightField.swift; sourceTree = "<group>"; };
+		365896DD231DA88E00BB65EC /* WeightField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightField.swift; sourceTree = "<group>"; };
 		36EF627D2310519C004E5F15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		36EF62802310522E004E5F15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		380CFA1B230FD7B3002EA2CC /* BMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		380CFA1E230FD7B3002EA2CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		380CFA25230FD7B4002EA2CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,10 @@
 		380CFD06231065D7002EA2CC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		380CFD08231065EC002EA2CC /* OnboardingContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentViewController.swift; sourceTree = "<group>"; };
 		380CFD0B231069FF002EA2CC /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		38F88D3C2315284E001DC19E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		38F88D3E23152887001DC19E /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		38F88D4023152A35001DC19E /* DotCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
+		38F88D4223152A58001DC19E /* CurveAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurveAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +69,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		365896DF23206D2D00BB65EC /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				365896D1231551B700BB65EC /* CalculatorViewController.swift */,
+				365896DD231DA88E00BB65EC /* WeightField.swift */,
+				365896D32317351400BB65EC /* BackgroundImage.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
 		380CFA12230FD7B3002EA2CC = {
 			isa = PBXGroup;
 			children = (
@@ -84,9 +101,11 @@
 			children = (
 				380CFA1E230FD7B3002EA2CC /* AppDelegate.swift */,
 				380CFD0423106535002EA2CC /* Storyboard.swift */,
-				36EF62802310522E004E5F15 /* ViewController.swift */,
+				38F88D3C2315284E001DC19E /* MainViewController.swift */,
 				36EF627D2310519C004E5F15 /* Main.storyboard */,
+				38F88D4423152A68001DC19E /* Charts */,
 				380CFD0B231069FF002EA2CC /* Storage.swift */,
+				365896DF23206D2D00BB65EC /* Calculator */,
 				380CFD0A231065F0002EA2CC /* Onboarding */,
 				380CFA25230FD7B4002EA2CC /* Assets.xcassets */,
 				380CFA27230FD7B4002EA2CC /* LaunchScreen.storyboard */,
@@ -130,11 +149,18 @@
 				380CFD0223106529002EA2CC /* Onboarding.storyboard */,
 				380CFD06231065D7002EA2CC /* OnboardingViewController.swift */,
 				380CFD08231065EC002EA2CC /* OnboardingContentViewController.swift */,
-				365896D1231551B700BB65EC /* CalculatorViewController.swift */,
-				365896DD231DA88E00BB65EC /* WeightField.swift */,
-				365896D32317351400BB65EC /* BackgroundImage.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		38F88D4423152A68001DC19E /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				38F88D3E23152887001DC19E /* ChartView.swift */,
+				38F88D4023152A35001DC19E /* DotCALayer.swift */,
+				38F88D4223152A58001DC19E /* CurveAlgorithm.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				380CFD0C231069FF002EA2CC /* Storage.swift in Sources */,
+				38F88D3D2315284E001DC19E /* MainViewController.swift in Sources */,
 				380CFD0123101D71002EA2CC /* WeightMetric.swift in Sources */,
 				365896D2231551B700BB65EC /* CalculatorViewController.swift in Sources */,
 				365896D42317351400BB65EC /* BackgroundImage.swift in Sources */,
@@ -219,10 +246,13 @@
 				365896DE231DA88E00BB65EC /* WeightField.swift in Sources */,
 				380CFD0523106535002EA2CC /* Storyboard.swift in Sources */,
 				380CFD09231065EC002EA2CC /* OnboardingContentViewController.swift in Sources */,
+				38F88D4123152A35001DC19E /* DotCALayer.swift in Sources */,
 				380CFCF92310008B002EA2CC /* database.xcdatamodeld in Sources */,
 				380CFCFB23100165002EA2CC /* User.swift in Sources */,
 				380CFD07231065D7002EA2CC /* OnboardingViewController.swift in Sources */,
+				38F88D4323152A59001DC19E /* CurveAlgorithm.swift in Sources */,
 				380CFA1F230FD7B3002EA2CC /* AppDelegate.swift in Sources */,
+				38F88D3F23152887001DC19E /* ChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

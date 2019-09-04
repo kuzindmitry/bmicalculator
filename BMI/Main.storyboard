@@ -13,17 +13,44 @@
         <!--Main View Controller-->
         <scene sceneID="QWp-CY-S1h">
             <objects>
-                <viewController id="nPY-e8-0VG" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController id="nPY-e8-0VG" customClass="MainViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zwl-lp-mAn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="cri-Sb-6qS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xy-A7-ykf" customClass="ChartView" customModule="BMI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="144" width="414" height="240"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="oi1-2L-HAr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8xy-A7-ykf" firstAttribute="leading" secondItem="A3l-vJ-OZh" secondAttribute="leading" id="FoL-oj-K9z"/>
+                            <constraint firstItem="cri-Sb-6qS" firstAttribute="top" secondItem="zwl-lp-mAn" secondAttribute="top" id="QJK-oK-whZ"/>
+                            <constraint firstAttribute="bottom" secondItem="cri-Sb-6qS" secondAttribute="bottom" id="REh-dm-UyL"/>
+                            <constraint firstItem="A3l-vJ-OZh" firstAttribute="trailing" secondItem="8xy-A7-ykf" secondAttribute="trailing" id="deZ-XL-mWF"/>
+                            <constraint firstItem="A3l-vJ-OZh" firstAttribute="trailing" secondItem="cri-Sb-6qS" secondAttribute="trailing" id="eBO-Kl-Gg7"/>
+                            <constraint firstItem="cri-Sb-6qS" firstAttribute="leading" secondItem="A3l-vJ-OZh" secondAttribute="leading" id="gu5-hA-vvd"/>
+                            <constraint firstItem="8xy-A7-ykf" firstAttribute="top" secondItem="A3l-vJ-OZh" secondAttribute="top" constant="100" id="zce-i9-btf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="A3l-vJ-OZh"/>
                     </view>
+                    <connections>
+                        <outlet property="chartView" destination="8xy-A7-ykf" id="UsD-7S-eDU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1a-Ib-n3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1836" y="21"/>
+            <point key="canvasLocation" x="-1836.2318840579712" y="20.758928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg" width="375" height="812"/>
+    </resources>
 </document>
