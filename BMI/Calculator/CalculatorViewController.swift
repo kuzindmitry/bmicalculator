@@ -18,7 +18,7 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        weightTextField.delegate = self
         
         // Background image settings (coded in BackgroundImage.swift file)
         
@@ -60,7 +60,12 @@ class CalculatorViewController: UIViewController {
         createSaveButton()
     }
     
-    @IBOutlet weak var WeightTextField: UITextField!
+    
+    @IBOutlet weak var maleButton: UIButton!
+    
+    @IBOutlet weak var femaleButton: UIButton!
+    
+    @IBOutlet weak var weightTextField: UITextField!
     
     @IBOutlet weak var weightMinusButton: UIButton!
     
@@ -79,13 +84,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func maleButtonPressed(_ sender: UIButton) {
-
+        maleButton.isSelected = true
+        femaleButton.isEnabled = false
     }
     
     
     @IBAction func femaleButtonPressed(_ sender: UIButton) {
+        maleButton.isEnabled = false
+        femaleButton.isSelected = true
     }
-    
+ 
     
 }
 
@@ -132,7 +140,6 @@ extension CalculatorViewController {
         
     }
     
-
     
     func createSaveButton() {
         let saveButton = UIButton (frame: CGRect(x: 20, y: 800, width: 370, height: 70))
@@ -147,4 +154,13 @@ extension CalculatorViewController {
     }
 }
 
+extension CalculatorViewController : UITextFieldDelegate {
+    // UITextFieldDelegate
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = "0123456789"
+        let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
+        let typedCharactersSet = CharacterSet (charactersIn: string)
+        return allowedCharactersSet.isSuperset(of: typedCharactersSet)
+    }
+}
 

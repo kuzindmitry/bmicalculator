@@ -192,6 +192,8 @@
                     </view>
                     <connections>
                         <outlet property="WeightTextField" destination="UB8-rN-fOW" id="Da5-XB-0bV"/>
+                        <outlet property="femaleButton" destination="8sB-67-9Au" id="hoR-rL-t5b"/>
+                        <outlet property="maleButton" destination="2dB-xi-TrH" id="rxg-lP-RfX"/>
                         <outlet property="weightMinusButton" destination="gkT-Pp-DLy" id="uju-UK-8wA"/>
                         <outlet property="weightPlusButton" destination="fEc-my-HLX" id="4TL-EI-qq0"/>
                     </connections>
