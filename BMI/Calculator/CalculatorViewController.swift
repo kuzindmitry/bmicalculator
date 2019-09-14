@@ -10,6 +10,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,8 @@ class CalculatorViewController: UIViewController {
         heightTextField.delegate = self
         ageTextField.delegate = self
         goalTextField.delegate = self
+        
+    
         
         // Background image settings (coded in BackgroundImage.swift file)
         
@@ -62,8 +65,9 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var weightTextField: UITextField!
     
-    @IBOutlet weak var weightMinusButton: UIButton!
+
     
+    @IBOutlet weak var weightMinusButton: UIButton!
     
     @IBOutlet weak var weightPlusButton: UIButton!
     
@@ -89,33 +93,68 @@ class CalculatorViewController: UIViewController {
         femaleButton.backgroundColor = UIColor.init(red: 114.0/255.0, green: 144.0/255.0, blue: 157.0/255.0, alpha: 1.0)
         maleButton.backgroundColor = UIColor.init(red: 52.0/255.0, green: 68.0/255.0, blue: 79.0/255.0, alpha: 1.0)
     }
+
+
+    // Setting WeightField class actions components
     
-    @IBAction func weightTextFieldChanged(_ sender: Any) {
+
+    
+
+    @IBAction func weightTextFieldDidBegin(_ sender: UITextField) {
+        
+        weightTextField.text = "50"
+        let number = weightTextField.text!
+        let doubleValueNumber = NSString(string: number).doubleValue
+        weightTextField.text = "\(doubleValueNumber)" as String
         
     }
     
-    @IBAction func weightMinusButtonRepeatingTouch(_ sender: UIButton) {
-        //weightMinusButton.backgroundColor. = UIColor.white
-    }
-    @IBAction func weightMinusButtonPressed(_ sender: UIButton) {
+    @IBAction func weightMinusButtonTouchedDown(_ sender: UIButton) {
         
-    }
-    
-    @IBAction func weightPlusButtonPressed(_ sender: UIButton) {
-        //weightPlusButton.isSelected = true
+        weightMinusButton.backgroundColor = UIColor.white
+        weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        
     }
     
 
- 
+    @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
+        
+        weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+        
+        
+        
+    }
+    
+
+    @IBAction func weightPlusButtonTouchedDown(_ sender: UIButton) {
+        weightPlusButton.backgroundColor = UIColor.white
+        weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        
+        
+    }
+    
+
+    @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
+        weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+        
+        
+    }
+    
+   
+    
+
+    
+
+    
     
 }
 
-let maxLength = 3
+let maxLength = 5
 
 extension CalculatorViewController : UITextFieldDelegate {
     // UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = "0123456789"
+        let allowedCharacters = ".0123456789"
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharactersSet = CharacterSet (charactersIn: string)
         
