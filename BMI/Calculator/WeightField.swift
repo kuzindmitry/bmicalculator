@@ -18,9 +18,7 @@ class WeightField: UIView {
         super.init(coder: aDecoder)
     }
     
-
-
-    
+  
     
     
 

@@ -136,6 +136,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="weightTextFieldDidBegin:" destination="gpZ-zV-xF2" eventType="editingDidBegin" id="hy1-6v-CI8"/>
+                                            <action selector="weightTextFieldValueChanged:" destination="gpZ-zV-xF2" eventType="valueChanged" id="qee-j3-VD8"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkT-Pp-DLy">

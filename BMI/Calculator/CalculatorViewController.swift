@@ -8,13 +8,16 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
-    
 
+
+class CalculatorViewController: UIViewController {
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         weightTextField.delegate = self
         heightTextField.delegate = self
         ageTextField.delegate = self
@@ -98,16 +101,13 @@ class CalculatorViewController: UIViewController {
     // Setting WeightField class actions components
     
 
+   
     
-
     @IBAction func weightTextFieldDidBegin(_ sender: UITextField) {
         
-        weightTextField.text = "50"
-        let number = weightTextField.text!
-        let doubleValueNumber = NSString(string: number).doubleValue
-        weightTextField.text = "\(doubleValueNumber)" as String
-        
+        weightTextField.text = "50.0"
     }
+    
     
     @IBAction func weightMinusButtonTouchedDown(_ sender: UIButton) {
         
@@ -116,38 +116,40 @@ class CalculatorViewController: UIViewController {
         
     }
     
-
+    
     @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
         
         weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-        
-        
+       
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let decreaseWeight: Double = -0.1
+        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
+        weightTextField.text = String(decreasedWeightResult)
         
     }
     
-
+    
     @IBAction func weightPlusButtonTouchedDown(_ sender: UIButton) {
+        
         weightPlusButton.backgroundColor = UIColor.white
         weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
-        
     }
     
-
+    
     @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
+        
         weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
         
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let increaseWeight: Double = 0.1
+        let increasedWeightResult = defaultWeightNumber + increaseWeight
+        weightTextField.text = String(increasedWeightResult)
         
     }
-    
-   
-    
-
-    
-
-    
-    
 }
+
+
 
 let maxLength = 5
 
@@ -158,10 +160,12 @@ extension CalculatorViewController : UITextFieldDelegate {
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharactersSet = CharacterSet (charactersIn: string)
         
+        
         if range.location > maxLength - 1 {
             textField.text?.removeLast()
-        }
+           }
         
         return allowedCharactersSet.isSuperset(of: typedCharactersSet)
     }
 }
+
