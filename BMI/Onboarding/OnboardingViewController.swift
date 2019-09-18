@@ -63,6 +63,7 @@ extension OnboardingViewController {
         createBackground()
         createPageControl()
         createSkipButton()
+     
     }
     
     func createBackground() {
@@ -98,13 +99,21 @@ extension OnboardingViewController {
         skipButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         skipButton.setTitleColor(.white, for: .normal)
         skipButton.addTarget(self, action: #selector(skipButtonDidTapped), for: .touchUpInside)
+        
+        
         view.addSubview(skipButton)
+        
     }
     
     func updateSkipButtonState() {
         let title = pendingIndex == (items.count - 1) ? "Done" : "Skip"
         skipButton.setTitle(title, for: .normal)
+
+        
     }
+    
+
+    
     
     func updateCurrentImage() {
         if items.count > pendingIndex {
@@ -121,8 +130,10 @@ extension OnboardingViewController {
             }
         }
     }
-    
 }
+
+
+
 
 // MARK: - Actions
 extension OnboardingViewController {

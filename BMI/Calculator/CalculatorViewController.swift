@@ -14,6 +14,7 @@ class CalculatorViewController: UIViewController {
 
     var weightTimer = Timer()
     let defaultWeight: String = "50.0"
+    let maxLength = 5
     
     
     override func viewDidLoad() {
@@ -34,7 +35,7 @@ class CalculatorViewController: UIViewController {
         // Height Segmented Control settings
        
         let heightSegmentedControl = UISegmentedControl (items: ["cm", "ft"])
-        heightSegmentedControl.frame = CGRect (x: 70, y: 349, width: 100, height: 50)
+        heightSegmentedControl.frame = CGRect (x: 62, y: 365, width: 100, height: 50)
         heightSegmentedControl.selectedSegmentIndex = 0
         heightSegmentedControl.tintColor = UIColor.clear
         let heightSegmentControlFont = UIFont.systemFont(ofSize: 40)
@@ -48,7 +49,7 @@ class CalculatorViewController: UIViewController {
         // Weight Segmented Control settings
 
         let weightSegmentedControl = UISegmentedControl (items: ["kg", "lb"])
-        weightSegmentedControl.frame = CGRect (x: 70, y: 442, width: 100, height: 50)
+        weightSegmentedControl.frame = CGRect (x: 62, y: 472, width: 100, height: 50)
         weightSegmentedControl.selectedSegmentIndex = 0
         weightSegmentedControl.tintColor = UIColor.clear
         let weightSegmentControlFont = UIFont.systemFont(ofSize: 40)
@@ -68,8 +69,6 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var heightTextField: UITextField!
     
     @IBOutlet weak var weightTextField: UITextField!
-    
-
     
     @IBOutlet weak var weightMinusButton: UIButton!
     
@@ -109,7 +108,6 @@ class CalculatorViewController: UIViewController {
         
     }
     
-    
     @IBAction func weightMinusButtonTouchedDown(_ sender: UIButton) {
         
         weightMinusButton.backgroundColor = UIColor.white
@@ -119,21 +117,12 @@ class CalculatorViewController: UIViewController {
     
     }
     
-    @objc func timerDecreaseAction() {
-        
-        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
-        let decreaseWeight: Double = -0.1
-        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
-        weightTextField.text = String(format: "%.1f", decreasedWeightResult)
-    }
-    
-    
+
     @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
         
         weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
        
         weightTimer.invalidate()
-        
         
     }
     
@@ -147,13 +136,6 @@ class CalculatorViewController: UIViewController {
         
     }
     
-    @objc func timerIncreaseAction() {
-        
-        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
-        let increaseWeight: Double = 0.1
-        let increasedWeightResult = defaultWeightNumber + increaseWeight
-        weightTextField.text = String(format: "%.1f", increasedWeightResult)
-    }
     
     @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
         
@@ -162,11 +144,34 @@ class CalculatorViewController: UIViewController {
         weightTimer.invalidate()
         
     }
+    
+    @IBAction func saveUserData(_ sender: UIButton) {
+        
+    }
+    
 }
 
 
+extension CalculatorViewController {
+    
+    @objc func timerDecreaseAction() {
+        
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let decreaseWeight: Double = -0.1
+        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
+        weightTextField.text = String(format: "%.1f", decreasedWeightResult)
+    }
+    
+    @objc func timerIncreaseAction() {
+        
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let increaseWeight: Double = 0.1
+        let increasedWeightResult = defaultWeightNumber + increaseWeight
+        weightTextField.text = String(format: "%.1f", increasedWeightResult)
+        
+    }
+}
 
-let maxLength = 5
 
 extension CalculatorViewController : UITextFieldDelegate {
     // UITextFieldDelegate
