@@ -121,7 +121,7 @@
                                 <rect key="frame" x="177" y="442" width="232" height="106"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UB8-rN-fOW">
+                                    <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="UB8-rN-fOW">
                                         <rect key="frame" x="47" y="13" width="150" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.17305487394332886" green="0.24698588252067566" blue="0.29402831196784973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -180,7 +180,7 @@
                                     </button>
                                 </subviews>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="177.4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l1x-w9-4ni">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="177.4" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="l1x-w9-4ni">
                                 <rect key="frame" x="225" y="349" width="150" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.17305487394332886" green="0.24698588252067566" blue="0.29402831196784973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -194,7 +194,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="62.5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SxP-as-JPS">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="62.5" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="SxP-as-JPS">
                                 <rect key="frame" x="225" y="564" width="150" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.17305487394332886" green="0.24698588252067566" blue="0.29402831196784973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,7 +208,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="29" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l3G-GF-Uy4">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="29" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="l3G-GF-Uy4">
                                 <rect key="frame" x="225" y="672" width="150" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.17305487394332886" green="0.24698588252067566" blue="0.29402831196784973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

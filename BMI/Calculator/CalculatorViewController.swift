@@ -12,6 +12,8 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
 
+    var weightTimer = Timer()
+    let defaultWeight: String = "50.0"
     
     
     override func viewDidLoad() {
@@ -23,7 +25,6 @@ class CalculatorViewController: UIViewController {
         ageTextField.delegate = self
         goalTextField.delegate = self
         
-    
         
         // Background image settings (coded in BackgroundImage.swift file)
         
@@ -100,12 +101,12 @@ class CalculatorViewController: UIViewController {
 
     // Setting WeightField class actions components
     
-
    
     
     @IBAction func weightTextFieldDidBegin(_ sender: UITextField) {
         
-        weightTextField.text = "50.0"
+        weightTextField.text = defaultWeight
+        
     }
     
     
@@ -114,6 +115,16 @@ class CalculatorViewController: UIViewController {
         weightMinusButton.backgroundColor = UIColor.white
         weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(CalculatorViewController.timerDecreaseAction), userInfo: nil, repeats: true)
+    
+    }
+    
+    @objc func timerDecreaseAction() {
+        
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let decreaseWeight: Double = -0.1
+        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
+        weightTextField.text = String(format: "%.1f", decreasedWeightResult)
     }
     
     
@@ -121,10 +132,8 @@ class CalculatorViewController: UIViewController {
         
         weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
        
-        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
-        let decreaseWeight: Double = -0.1
-        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
-        weightTextField.text = String(decreasedWeightResult)
+        weightTimer.invalidate()
+        
         
     }
     
@@ -134,17 +143,23 @@ class CalculatorViewController: UIViewController {
         weightPlusButton.backgroundColor = UIColor.white
         weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(CalculatorViewController.timerIncreaseAction), userInfo: nil, repeats: true)
+        
     }
     
+    @objc func timerIncreaseAction() {
+        
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let increaseWeight: Double = 0.1
+        let increasedWeightResult = defaultWeightNumber + increaseWeight
+        weightTextField.text = String(format: "%.1f", increasedWeightResult)
+    }
     
     @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
         
         weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
         
-        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
-        let increaseWeight: Double = 0.1
-        let increasedWeightResult = defaultWeightNumber + increaseWeight
-        weightTextField.text = String(increasedWeightResult)
+        weightTimer.invalidate()
         
     }
 }
@@ -160,8 +175,9 @@ extension CalculatorViewController : UITextFieldDelegate {
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharactersSet = CharacterSet (charactersIn: string)
         
+
         
-        if range.location > maxLength - 1 {
+        if range.location > maxLength - 1    {
             textField.text?.removeLast()
            }
         
