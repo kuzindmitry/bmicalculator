@@ -160,6 +160,7 @@ extension CalculatorViewController {
         let decreaseWeight: Double = -0.1
         let decreasedWeightResult = defaultWeightNumber + decreaseWeight
         weightTextField.text = String(format: "%.1f", decreasedWeightResult)
+        
     }
     
     @objc func timerIncreaseAction() {

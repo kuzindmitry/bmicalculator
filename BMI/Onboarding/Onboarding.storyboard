@@ -15,7 +15,7 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Nsa-6J-oqO" customClass="OnboardingViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="0Je-lu-gIA" kind="presentation" identifier="toCalculator" id="4Hi-pA-HNY"/>
+                        <segue destination="0Je-lu-gIA" kind="presentation" identifier="toCalculator" id="5JJ-g6-qzW"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhC-EZ-SxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24Y-Gg-2pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2104" y="1466"/>
+            <point key="canvasLocation" x="-2104" y="1443"/>
         </scene>
     </scenes>
     <resources>
