@@ -15,7 +15,7 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Nsa-6J-oqO" customClass="OnboardingViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="0Je-lu-gIA" kind="presentation" identifier="toCalculator" id="5JJ-g6-qzW"/>
+                        <segue destination="0Je-lu-gIA" kind="presentation" identifier="toCalculator" id="agP-tg-6D0"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhC-EZ-SxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,34 +77,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mn-Iq-pQV">
-                                <rect key="frame" x="219" y="149" width="170" height="170"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuy-Eg-21Q">
+                                <rect key="frame" x="30" y="149" width="170" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <inset key="titleEdgeInsets" minX="-500" minY="100" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="58" minY="58" maxX="58" maxY="58"/>
-                                <state key="normal" title="Female" image="female">
-                                    <color key="titleShadowColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="femaleButtonPressed:" destination="0Je-lu-gIA" eventType="touchUpInside" id="hB6-nv-X8K"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuy-Eg-21Q">
-                                <rect key="frame" x="26" y="149" width="170" height="170"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <inset key="titleEdgeInsets" minX="-446" minY="100" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="58" minY="58" maxX="58" maxY="58"/>
-                                <state key="normal" title="Male" image="male"/>
+                                <inset key="titleEdgeInsets" minX="-75" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="50" minY="-15" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Male" image="male_75px"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
@@ -236,7 +216,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMI Calculator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-KB-3cp">
-                                <rect key="frame" x="20" y="77" width="226" height="43"/>
+                                <rect key="frame" x="30" y="74" width="226" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -248,11 +228,31 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mn-Iq-pQV">
+                                <rect key="frame" x="215" y="149" width="170" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <inset key="titleEdgeInsets" minX="-75" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="50" minY="-15" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Female" image="female_75px">
+                                    <color key="titleShadowColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="femaleButtonPressed:" destination="0Je-lu-gIA" eventType="touchUpInside" id="hB6-nv-X8K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tdo-KB-3cp" firstAttribute="top" secondItem="uRR-zY-zPw" secondAttribute="top" constant="33" id="twA-77-k7f"/>
-                            <constraint firstItem="tdo-KB-3cp" firstAttribute="leading" secondItem="Mwe-Sm-AUO" secondAttribute="leadingMargin" id="uIi-Vf-o0e"/>
+                            <constraint firstItem="tdo-KB-3cp" firstAttribute="leading" secondItem="uRR-zY-zPw" secondAttribute="leading" constant="30" id="IOk-WP-AV1"/>
+                            <constraint firstItem="tdo-KB-3cp" firstAttribute="top" secondItem="uRR-zY-zPw" secondAttribute="top" constant="30" id="aVE-24-ytT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uRR-zY-zPw"/>
                     </view>
@@ -274,7 +274,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="female" width="512" height="512"/>
-        <image name="male" width="512" height="512"/>
+        <image name="female_75px" width="75" height="75"/>
+        <image name="male_75px" width="75" height="75"/>
     </resources>
 </document>
