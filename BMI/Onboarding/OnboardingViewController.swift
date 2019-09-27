@@ -63,7 +63,8 @@ extension OnboardingViewController {
         createBackground()
         createPageControl()
         createSkipButton()
-        skipButtonPressed()
+   
+
      
     }
     
@@ -101,24 +102,20 @@ extension OnboardingViewController {
         skipButton.setTitleColor(.white, for: .normal)
         skipButton.addTarget(self, action: #selector(skipButtonDidTapped), for: .touchUpInside)
         
-
-        
         view.addSubview(skipButton)
         
     }
     
     func updateSkipButtonState() {
+        
         let title = pendingIndex == (items.count - 1) ? "Done" : "Skip"
         skipButton.setTitle(title, for: .normal)
-
         
+//        if skipButton.title(for: UIControl.State.highlighted) == "Done" {
+//
+//        }
     }
-    
-    func skipButtonPressed() {
-        if skipButton.title(for: UIControl.State.highlighted) == "Done" {
-            performSegue(withIdentifier: "toCalculator", sender: nil)
-        }
-    }
+
     
     
     func updateCurrentImage() {
@@ -157,7 +154,7 @@ extension OnboardingViewController {
     }
 
     func doneAction() {
-        
+        performSegue(withIdentifier: "toCalculator", sender: nil)
     }
     
 }

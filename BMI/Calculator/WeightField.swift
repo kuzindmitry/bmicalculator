@@ -11,27 +11,96 @@ import UIKit
   
 class WeightField: UIView {
     
-    let weightTextField = UITextField()
-    var weightMinusButton = UIButton()
-    let weightPlusButton = UIButton()
-    required init? (coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    
+    // Outlets
+    @IBOutlet public weak var weightTextField: UITextField!
+        
+//        didSet {
+//            weightTextField.layer.cornerRadius = weightTextField.frame.size.height / 2
+//        }
+    
+    
+    @IBOutlet weak var weightMinusButton: UIButton!
+
+    @IBOutlet weak var weightPlusButton: UIButton!
+    
+
+    
+    // Variabled
+    var weightTimer = Timer()
+    let defaultWeight: String = "50.0"
+    
+}
+
+//MARK: - Actions
+extension WeightField {
+    
+    @IBAction func weightTextFieldDidBegin(_ sender: UITextField) {
+        
+        weightTextField.text = defaultWeight
     }
     
-  
+    @IBAction func weightMinusButtonTouchedDown(_ sender: UIButton) {
+        
+        weightMinusButton.backgroundColor = UIColor.white
+        weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
     
-    
-
-    
-    
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
     }
-    */
+    
 
+    @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
+        
+        weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+       
+        
+        weightTimer.invalidate()
+        
+    }
+    
+    
+    @IBAction func weightPlusButtonTouchedDown(_ sender: UIButton) {
+        
+        weightPlusButton.backgroundColor = UIColor.white
+        weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+        
+    }
+    
+    
+    @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
+        
+        weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+        
+        weightTimer.invalidate()
+        
+    }
+    
+    
+}
 
+//MARK: - Subactions
+extension WeightField {
+    
+    @objc func timerDecreaseAction() {
+        
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let decreaseWeight: Double = -0.1
+        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
+        weightTextField.text = String(format: "%.1f", decreasedWeightResult)
+        
+    }
+    
+    @objc func timerIncreaseAction() {
+        
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let increaseWeight: Double = 0.1
+        let increasedWeightResult = defaultWeightNumber + increaseWeight
+        weightTextField.text = String(format: "%.1f", increasedWeightResult)
+        
+    }
+    
 }

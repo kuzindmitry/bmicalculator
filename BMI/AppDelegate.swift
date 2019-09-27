@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import CoreData
+protocol SecondViewControllerDelegate {
+    func secondViewController(_controller: UIViewController, didChtoto any: Any)
+}
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SecondViewControllerDelegate {
 
     var window: UIWindow?
     
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func secondViewController(_controller: UIViewController, didChtoto any: Any) {
         
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if !Storage.default.isOnboardingPresented {
             window?.rootViewController = Storyboard.Onboarding.initialViewController
         }
@@ -44,8 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+      
     }
 
-
 }
-

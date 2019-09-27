@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nsa-6J-oqO">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nsa-6J-oqO">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +13,7 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Nsa-6J-oqO" customClass="OnboardingViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="0Je-lu-gIA" kind="presentation" identifier="toCalculator" id="agP-tg-6D0"/>
+                        <segue destination="PPJ-JR-T8G" kind="presentation" identifier="toCalculator" id="ntd-Sm-4jV"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhC-EZ-SxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -62,219 +60,15 @@
             </objects>
             <point key="canvasLocation" x="-1407.2463768115942" y="744.64285714285711"/>
         </scene>
-        <!--Calculator View Controller-->
-        <scene sceneID="Am7-hD-fcQ">
+        <!--Calculator-->
+        <scene sceneID="1GO-JI-Bjl">
             <objects>
-                <viewController id="0Je-lu-gIA" customClass="CalculatorViewController" customModule="BMI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Mwe-Sm-AUO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K80-gP-k7A">
-                                <rect key="frame" x="74" y="697" width="75" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuy-Eg-21Q">
-                                <rect key="frame" x="30" y="149" width="170" height="170"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <inset key="titleEdgeInsets" minX="-75" minY="100" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="50" minY="-15" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Male" image="male_75px"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="maleButtonPressed:" destination="0Je-lu-gIA" eventType="touchUpInside" id="hzF-Yq-mfB"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uya-5u-gJi" customClass="WeightField" customModule="BMI" customModuleProvider="target">
-                                <rect key="frame" x="177" y="442" width="232" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="hKI-Fw-Ag9">
-                                        <rect key="frame" x="47" y="13" width="150" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" red="0.51333552599999999" green="0.6341854334" blue="0.68015044930000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="40"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="weightTextFieldDidBegin:" destination="0Je-lu-gIA" eventType="editingDidBegin" id="fMV-C3-lpy"/>
-                                            <action selector="weightTextFieldValueChanged:" destination="0Je-lu-gIA" eventType="valueChanged" id="ZDC-0U-hNV"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FX2-6J-BYE">
-                                        <rect key="frame" x="31" y="36" width="36" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="-">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                <integer key="value" value="18"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="weightMinusButtonTouchedDown:" destination="0Je-lu-gIA" eventType="touchDown" id="8hk-er-v59"/>
-                                            <action selector="weightMinusButtonTouchedUpInside:" destination="0Je-lu-gIA" eventType="touchUpInside" id="Guj-n9-zZC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok1-xe-AJQ">
-                                        <rect key="frame" x="180" y="35" width="36" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="+">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                <integer key="value" value="18"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="weightPlusButtonTouchedDown:" destination="0Je-lu-gIA" eventType="touchDown" id="hkz-3e-BrK"/>
-                                            <action selector="weightPlusButtonTouchedUpInside:" destination="0Je-lu-gIA" eventType="touchUpInside" id="6Dk-zr-33i"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </view>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="177.4" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-SW-BsY">
-                                <rect key="frame" x="225" y="349" width="150" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.44769704339999999" green="0.56463783980000004" blue="0.61554914709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="62.5" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="euO-5O-T8H">
-                                <rect key="frame" x="225" y="564" width="150" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.44769704339999999" green="0.56463783980000004" blue="0.61554914709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="29" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="MGz-4P-rmJ">
-                                <rect key="frame" x="225" y="672" width="150" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.44769704339999999" green="0.56463783980000004" blue="0.61554914709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UF-DY-gQm">
-                                <rect key="frame" x="20" y="782" width="374" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.120521737" green="0.46988988539999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Calculate your BMI Index"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saveUserData:" destination="0Je-lu-gIA" eventType="touchUpInside" id="HJo-lN-Fql"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMI Calculator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-KB-3cp">
-                                <rect key="frame" x="30" y="74" width="226" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="goal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qY3-zQ-JGf">
-                                <rect key="frame" x="74" y="589" width="75" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mn-Iq-pQV">
-                                <rect key="frame" x="215" y="149" width="170" height="170"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <inset key="titleEdgeInsets" minX="-75" minY="100" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="50" minY="-15" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Female" image="female_75px">
-                                    <color key="titleShadowColor" red="0.20784313730000001" green="0.2666666667" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="femaleButtonPressed:" destination="0Je-lu-gIA" eventType="touchUpInside" id="hB6-nv-X8K"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="tdo-KB-3cp" firstAttribute="leading" secondItem="uRR-zY-zPw" secondAttribute="leading" constant="30" id="IOk-WP-AV1"/>
-                            <constraint firstItem="tdo-KB-3cp" firstAttribute="top" secondItem="uRR-zY-zPw" secondAttribute="top" constant="30" id="aVE-24-ytT"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="uRR-zY-zPw"/>
-                    </view>
-                    <connections>
-                        <outlet property="ageTextField" destination="MGz-4P-rmJ" id="CNu-VC-t9Z"/>
-                        <outlet property="femaleButton" destination="6mn-Iq-pQV" id="8fC-18-JFv"/>
-                        <outlet property="goalTextField" destination="euO-5O-T8H" id="6NY-3G-XAW"/>
-                        <outlet property="heightTextField" destination="wWe-SW-BsY" id="Woj-8J-wd3"/>
-                        <outlet property="maleButton" destination="iuy-Eg-21Q" id="etM-YG-5O5"/>
-                        <outlet property="saveButton" destination="0UF-DY-gQm" id="29h-9W-poU"/>
-                        <outlet property="weightMinusButton" destination="FX2-6J-BYE" id="vJv-fP-zDH"/>
-                        <outlet property="weightPlusButton" destination="ok1-xe-AJQ" id="eOI-Zn-oJn"/>
-                        <outlet property="weightTextField" destination="hKI-Fw-Ag9" id="cTg-Fj-I0x"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="24Y-Gg-2pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Calculator" id="PPJ-JR-T8G" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hm7-eE-mN3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ob8-6B-nIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2104" y="1443"/>
+            <point key="canvasLocation" x="-744" y="734"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="female_75px" width="75" height="75"/>
-        <image name="male_75px" width="75" height="75"/>
-    </resources>
 </document>

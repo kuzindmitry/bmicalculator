@@ -7,79 +7,99 @@
 //
 
 import UIKit
-
+import CoreData
 
 
 class CalculatorViewController: UIViewController {
-
-    var weightTimer = Timer()
-    let defaultWeight: String = "50.0"
-    let maxLength = 5
     
+    let segmentedControlsTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(red: 52.0/255.0, green: 68.0/255.0, blue: 79.0/255.0, alpha: 1.0)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        weightTextField.delegate = self
         heightTextField.delegate = self
+        weightTextField.delegate = self
         ageTextField.delegate = self
         goalTextField.delegate = self
         
+        heightSegmentedControl.setTitleTextAttributes(segmentedControlsTextAttributes, for: .selected)
+        weightSegmentedControl.setTitleTextAttributes(segmentedControlsTextAttributes, for: .selected)
+        
         
         // Background image settings (coded in BackgroundImage.swift file)
-        
         self.view.addBackground()
-        
-        
-        // Height Segmented Control settings
-       
-        let heightSegmentedControl = UISegmentedControl (items: ["cm", "ft"])
-        heightSegmentedControl.frame = CGRect (x: 62, y: 365, width: 100, height: 50)
-        heightSegmentedControl.selectedSegmentIndex = 0
-        heightSegmentedControl.tintColor = UIColor.clear
-        let heightSegmentControlFont = UIFont.systemFont(ofSize: 40)
-        heightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: heightSegmentControlFont], for: UIControl.State.normal)
-        heightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
-        heightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: UIControl.State.normal)
-        self.view.addSubview(heightSegmentedControl)
-        
-       
- 
-        // Weight Segmented Control settings
-
-        let weightSegmentedControl = UISegmentedControl (items: ["kg", "lb"])
-        weightSegmentedControl.frame = CGRect (x: 62, y: 472, width: 100, height: 50)
-        weightSegmentedControl.selectedSegmentIndex = 0
-        weightSegmentedControl.tintColor = UIColor.clear
-        let weightSegmentControlFont = UIFont.systemFont(ofSize: 40)
-        weightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: weightSegmentControlFont], for: UIControl.State.normal)
-        weightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
-        weightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: UIControl.State.normal)
-        self.view.addSubview(weightSegmentedControl)
-        
     }
     
     
+    // MARK: - Outlets
     
     @IBOutlet weak var maleButton: UIButton!
     
     @IBOutlet weak var femaleButton: UIButton!
     
-    @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var heightTextField: UITextField! {
+        
+        didSet {
+            heightTextField.layer.cornerRadius = heightTextField.frame.size.height / 2
+        }
+    }
     
-    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField! {
+      
+        didSet {
+           weightTextField.layer.cornerRadius = weightTextField.frame.size.height / 2
+        }
+        
+    }
     
-    @IBOutlet weak var weightMinusButton: UIButton!
     
-    @IBOutlet weak var weightPlusButton: UIButton!
+    @IBOutlet weak var goalTextField: UITextField! {
+        didSet {
+            goalTextField.layer.cornerRadius = goalTextField.frame.size.height / 2
+        }
+    }
     
-    @IBOutlet weak var goalTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField! {
+        didSet {
+            ageTextField.layer.cornerRadius = ageTextField.frame.size.height / 2
+        }
+    }
+        
+    @IBOutlet weak var saveButton: UIButton! {
+        didSet {
+            saveButton.layer.cornerRadius = saveButton.frame.size.height / 2
+        }
+    }
     
-    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var heightSegmentedControl: UISegmentedControl! {
+        
+        didSet {
+            
+        heightSegmentedControl.tintColor = UIColor.clear
+        let heightSegmentControlFont = UIFont.systemFont(ofSize: 40)
+        
+        heightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: heightSegmentControlFont], for: UIControl.State.normal)
+        heightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+    heightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: UIControl.State.normal)
+            
+        }
+    }
     
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var weightSegmentedControl: UISegmentedControl! {
+        
+        didSet {
+
+        weightSegmentedControl.tintColor = UIColor.clear
+        let weightSegmentControlFont = UIFont.systemFont(ofSize: 40)
+            
+        weightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: weightSegmentControlFont], for: UIControl.State.normal)
+        weightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+        weightSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: UIControl.State.normal)
+            
+        }
+    }
     
+    // MARK: - Actions
     
     @IBAction func maleButtonPressed(_ sender: UIButton) {
     
@@ -97,82 +117,39 @@ class CalculatorViewController: UIViewController {
         maleButton.backgroundColor = UIColor.init(red: 52.0/255.0, green: 68.0/255.0, blue: 79.0/255.0, alpha: 1.0)
     }
 
+    @IBAction public func saveUserData(_ sender: UIButton) {
+        
+        let user = User()
+            //TODO: ох
+            //FIXME: исправитьь это: добавить аутлеты
+        
+        if maleButton.isSelected {
+            user.gender = GenderType.male
+        }
+        
+        if femaleButton.isSelected {
+            user.gender = GenderType.female
+        }
+        
+        user.height = Double(heightTextField.text!)!
+        user.weight = Double(weightTextField.text!)!
+        user.weightGoal = Double(goalTextField.text!)!
+        user.age = Int(ageTextField.text!)!
+        
+        Database.current.add(entity: user) {
+            
+        }
+        
+    }
 
-    // Setting WeightField class actions components
     
-   
-    
-    @IBAction func weightTextFieldDidBegin(_ sender: UITextField) {
-        
-        weightTextField.text = defaultWeight
-        
-    }
-    
-    @IBAction func weightMinusButtonTouchedDown(_ sender: UIButton) {
-        
-        weightMinusButton.backgroundColor = UIColor.white
-        weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
-        
-        weightTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(CalculatorViewController.timerDecreaseAction), userInfo: nil, repeats: true)
-    
-    }
-    
-
-    @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
-        
-        weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-       
-        weightTimer.invalidate()
-        
-    }
-    
-    
-    @IBAction func weightPlusButtonTouchedDown(_ sender: UIButton) {
-        
-        weightPlusButton.backgroundColor = UIColor.white
-        weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
-        
-        weightTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(CalculatorViewController.timerIncreaseAction), userInfo: nil, repeats: true)
-        
-    }
-    
-    
-    @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
-        
-        weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-        
-        weightTimer.invalidate()
-        
-    }
-    
-    @IBAction func saveUserData(_ sender: UIButton) {
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
 }
 
-
-extension CalculatorViewController {
-    
-    @objc func timerDecreaseAction() {
-        
-        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
-        let decreaseWeight: Double = -0.1
-        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
-        weightTextField.text = String(format: "%.1f", decreasedWeightResult)
-        
-    }
-    
-    @objc func timerIncreaseAction() {
-        
-        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
-        let increaseWeight: Double = 0.1
-        let increasedWeightResult = defaultWeightNumber + increaseWeight
-        weightTextField.text = String(format: "%.1f", increasedWeightResult)
-        
-    }
-}
-
+// MARK: - Delegates
 
 extension CalculatorViewController : UITextFieldDelegate {
     // UITextFieldDelegate
@@ -181,11 +158,21 @@ extension CalculatorViewController : UITextFieldDelegate {
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharactersSet = CharacterSet (charactersIn: string)
         
-
+        if heightTextField.text!.count > 2 {
+            heightTextField.text?.removeLast()
+        }
         
-        if range.location > maxLength - 1    {
-            textField.text?.removeLast()
-           }
+        if weightTextField.text!.count > 5 {
+            weightTextField.text?.removeLast()
+        }
+        
+        if goalTextField.text!.count > 5 {
+            goalTextField.text?.removeLast()
+        }
+
+        if ageTextField.text!.count > 1 {
+            ageTextField.text?.removeLast()
+        }
         
         return allowedCharactersSet.isSuperset(of: typedCharactersSet)
     }
