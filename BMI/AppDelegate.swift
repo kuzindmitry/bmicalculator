@@ -8,13 +8,11 @@
 
 import UIKit
 import CoreData
-protocol SecondViewControllerDelegate {
-    func secondViewController(_controller: UIViewController, didChtoto any: Any)
-}
+
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SecondViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     

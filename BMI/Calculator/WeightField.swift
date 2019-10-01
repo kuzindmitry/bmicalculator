@@ -11,23 +11,19 @@ import UIKit
   
 class WeightField: UIView {
     
-    
-    
-    // Outlets
-    @IBOutlet public weak var weightTextField: UITextField!
-        
-//        didSet {
-//            weightTextField.layer.cornerRadius = weightTextField.frame.size.height / 2
-//        }
-    
+    //MARK: Outlets
+
+    @IBOutlet public weak var weightTextField: UITextField! {
+     didSet {
+            weightTextField.layer.cornerRadius = weightTextField.frame.size.height / 2
+        }
+    }
     
     @IBOutlet weak var weightMinusButton: UIButton!
 
     @IBOutlet weak var weightPlusButton: UIButton!
     
-
-    
-    // Variabled
+    //MARK: Variables and Constants
     var weightTimer = Timer()
     let defaultWeight: String = "50.0"
     
@@ -46,7 +42,7 @@ extension WeightField {
         weightMinusButton.backgroundColor = UIColor.white
         weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
-        weightTimer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
     
     }
     
@@ -60,13 +56,15 @@ extension WeightField {
         
     }
     
+
+    
     
     @IBAction func weightPlusButtonTouchedDown(_ sender: UIButton) {
         
         weightPlusButton.backgroundColor = UIColor.white
         weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
-        weightTimer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
         
     }
     
@@ -79,7 +77,17 @@ extension WeightField {
         
     }
     
+    @IBAction func weightMinusButtonOutOfArea(_ sender: UIButton) {
+        
+        weightTimer.invalidate()
+        weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
+    }
     
+    @IBAction func weightPlusButtonOutOfArea(_ sender: UIButton) {
+        
+        weightTimer.invalidate()
+        weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
+    }
 }
 
 //MARK: - Subactions
