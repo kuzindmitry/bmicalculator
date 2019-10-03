@@ -7,10 +7,27 @@
 //
 
 import UIKit
+import CoreData
 
 class MainViewController: UIViewController {
 
     @IBOutlet weak var chartView: ChartView!
+    
+    @IBOutlet weak var curvesExplanation: UIView!
+    
+    @IBOutlet weak var goalView: UIView!
+    
+    @IBOutlet weak var currentWeightView: UIView!
+    
+    @IBOutlet weak var goalLabel: UILabel! 
+    
+    @IBOutlet weak var weightMetricLabel: UILabel!
+    
+    @IBOutlet weak var currentWeightLabel: UILabel!
+    
+    @IBOutlet weak var remainLabel: UILabel!
+    
+    @IBOutlet weak var historyTableView: UITableView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -20,8 +37,16 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         chartView.isCurved = true
-        chartView.dataEntries = generateRandomData()
+        chartView.dataEntries = receiveUserDetails()
+//            = generateRandomData()
         chartView.backgroundColor = .clear
+        
+    }
+    
+    func receiveUserDetails() -> [PointEntry] {
+        var result: [PointEntry] = []
+        
+        return result
     }
     
     func generateRandomData() -> [PointEntry] {

@@ -356,6 +356,7 @@
                                 <state key="normal" title="Calculate your BMI Index"/>
                                 <connections>
                                     <action selector="saveUserData:" destination="q1U-2H-SdS" eventType="touchUpInside" id="2rX-HA-TYh"/>
+                                    <segue destination="kRt-zd-ZBp" kind="show" identifier="toMain" id="vkd-7b-mxd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -396,6 +397,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQR-ZI-dYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2104.3478260869565" y="1442.4107142857142"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="Fru-0h-ocK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="kRt-zd-ZBp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kOJ-nm-2cU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wR9-Th-jMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1357" y="1442"/>
         </scene>
     </scenes>
     <resources>
