@@ -16,10 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func secondViewController(_controller: UIViewController, didChtoto any: Any) {
-        
-    }
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if !Storage.default.isOnboardingPresented {
             window?.rootViewController = Storyboard.Onboarding.initialViewController
