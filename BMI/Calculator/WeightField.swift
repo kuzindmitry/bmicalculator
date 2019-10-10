@@ -19,9 +19,17 @@ class WeightField: UIView {
         }
     }
     
-    @IBOutlet weak var weightMinusButton: UIButton!
+    @IBOutlet weak var weightMinusButton: UIButton! {
+        didSet {
+            weightMinusButton.layer.cornerRadius = weightMinusButton.frame.size.height / 2
+        }
+    }
 
-    @IBOutlet weak var weightPlusButton: UIButton!
+    @IBOutlet weak var weightPlusButton: UIButton! {
+        didSet {
+            weightPlusButton.layer.cornerRadius = weightPlusButton.frame.size.height / 2
+        }
+    }
     
     //MARK: Variables and Constants
     var weightTimer = Timer()

@@ -8,8 +8,6 @@
 
 import UIKit
 
-//MARK: Main VC Class
-
 class MainViewController: UIViewController {
 
     //MARK: Outlets
@@ -32,10 +30,15 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var historyTableView: UITableView!
     
-    @IBOutlet weak var addWeightButton: UIButton! {
+    @IBOutlet weak var addTodaysWeightFromNextvcButton: UIButton! {
         didSet {
-            addWeightButton.layer.cornerRadius = addWeightButton.frame.size.height / 5
+            addTodaysWeightFromNextvcButton.layer.cornerRadius = addTodaysWeightFromNextvcButton.frame.size.height / 5
         }
+    }
+    
+    @IBAction func addTodaysWeightButtonTouchedDown(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "toTodaysWeight", sender: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -46,33 +49,36 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         chartView.isCurved = true
-        chartView.dataEntries = generateRandomData()
-//            receiveUserDetails()
-//            generateRandomData()
+        chartView.dataEntries = receiveUserDetails()
         chartView.backgroundColor = .clear
         
     }
+    
+    //MARK: Functions
+    //FIXME: User's first weight input
     
     func receiveUserDetails() -> [PointEntry] {
         var result: [PointEntry] = []
         
         for i in 0..<100 {
-        
-        let value = Double(User.current!.weight)
-        
+            
+        let value = User.current!.weight
+    
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMM"
         var date = Date()
         date.addTimeInterval(TimeInterval(24*60*60*i))
-            result.append(PointEntry(value: Int(value), label: formatter.string(from: date)))
             
+        result.append(PointEntry(value: Int(value), label: formatter.string(from: date)))
+
        }
-        
+
         return result
     }
     
     func generateRandomData() -> [PointEntry] {
         var result: [PointEntry] = []
+        
         for i in 0..<100 {
             let value = Int(arc4random() % 500)
             

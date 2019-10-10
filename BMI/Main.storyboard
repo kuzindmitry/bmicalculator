@@ -19,17 +19,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="cri-Sb-6qS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39z-6r-dqb">
-                                <rect key="frame" x="324" y="44" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.59607843140000005" green="0.67450980390000004" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="qox-lP-Le1" kind="show" id="FGQ-Ih-xvx"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xy-A7-ykf" customClass="ChartView" customModule="BMI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="144" width="414" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -266,6 +255,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtY-dM-puA">
+                                <rect key="frame" x="324" y="44" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.50980392159999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.14117647059999999" green="0.20392156859999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTodaysWeightButtonTouchedDown:" destination="nPY-e8-0VG" eventType="touchDown" id="lsO-Xv-Tx0"/>
+                                    <segue destination="qox-lP-Le1" kind="show" identifier="toTodaysWeight" id="YIu-sf-4ug"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -284,7 +286,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Wzp-kj-qIc"/>
                     <connections>
-                        <outlet property="addTodaysWeightButton" destination="39z-6r-dqb" id="sm4-pQ-Ff7"/>
+                        <outlet property="addTodaysWeightFromNextvcButton" destination="xtY-dM-puA" id="lv2-BI-bfP"/>
                         <outlet property="chartView" destination="8xy-A7-ykf" id="UsD-7S-eDU"/>
                         <outlet property="currentWeightLabel" destination="mof-Kh-LgN" id="Qrw-Dl-X0E"/>
                         <outlet property="currentWeightView" destination="BWn-74-Al3" id="wqH-tR-dKB"/>
@@ -321,11 +323,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r77-MB-fhC">
                                 <rect key="frame" x="93" y="125.5" width="228" height="92.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXf-Xa-waT">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="YXf-Xa-waT">
                                         <rect key="frame" x="19" y="0.0" width="190" height="92.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14117647058823529" green="0.20392156862745098" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
+                                        <color key="textColor" red="0.43137254899999999" green="0.5450980392" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
@@ -345,9 +351,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="weightMinusButtonTouchedDown:" destination="qox-lP-Le1" eventType="touchDown" id="mV8-Pk-T9b"/>
-                                            <action selector="weightMinusButtonTouchedDragOuside:" destination="qox-lP-Le1" eventType="touchDragOutside" id="Ysd-im-Ky3"/>
-                                            <action selector="weightMinusButtonTouchedUpInside:" destination="qox-lP-Le1" eventType="touchUpInside" id="mny-oP-JSi"/>
+                                            <action selector="todaysWeightPlusButtonIsTouchedDown:" destination="qox-lP-Le1" eventType="touchDown" id="gL1-Yd-aD5"/>
+                                            <action selector="todaysWeightPlusButtonIsTouchedDragOutside:" destination="qox-lP-Le1" eventType="touchDragOutside" id="oFn-ca-HTe"/>
+                                            <action selector="todaysWeightPlusButtonIsTouchedUpInside:" destination="qox-lP-Le1" eventType="touchUpInside" id="3ND-VX-Ae4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRT-S7-kIv">
@@ -359,9 +365,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="weightPlusButtonTouchedDown:" destination="qox-lP-Le1" eventType="touchDown" id="qzo-78-7Qe"/>
-                                            <action selector="weightPlusButtonTouchedDragOutside:" destination="qox-lP-Le1" eventType="touchDragOutside" id="TkK-CG-Wxb"/>
-                                            <action selector="weightPlusButtonTouchedUpInside:" destination="qox-lP-Le1" eventType="touchUpInside" id="AdM-nk-pc5"/>
+                                            <action selector="todaysWeightMinusButtonIsTouchedDown:" destination="qox-lP-Le1" eventType="touchDown" id="daB-eT-lCa"/>
+                                            <action selector="todaysWeightMinusButtonIsTouchedDragOutside:" destination="qox-lP-Le1" eventType="touchDragOutside" id="3EW-MI-GIS"/>
+                                            <action selector="todaysWeightMinusButtonIsTouchedUpInside:" destination="qox-lP-Le1" eventType="touchUpInside" id="ddz-gP-tRJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -370,57 +376,50 @@
                                     <constraint firstAttribute="height" constant="92.5" id="JXF-LV-CEd"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1It-8d-lLP">
-                                <rect key="frame" x="93" y="242" width="228" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1It-8d-lLP">
+                                <rect key="frame" x="93" y="238" width="228" height="50"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5cY-C2-fWs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Today's Weight">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addTodaysWeightButtonIsTouchedDown:" destination="qox-lP-Le1" eventType="touchDown" id="510-Bw-c6g"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use lower field to add Your Weight for Specific Date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1e-mF-9HM">
-                                <rect key="frame" x="68" y="319" width="277" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use lower field to add Your Weight for Specific Date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1e-mF-9HM">
+                                <rect key="frame" x="69" y="296" width="277" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="TUw-hv-LbE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Weight at" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiK-bM-Iej">
-                                <rect key="frame" x="132" y="455" width="148" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Weight at" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiK-bM-Iej">
+                                <rect key="frame" x="95" y="396" width="225" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="tad-Ns-wf8">
-                                <rect key="frame" x="-1" y="495" width="414" height="76"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="568018800">
-                                    <!--2019-01-01 07:00:00 +0000-->
-                                </date>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="...was" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-P3-1YA">
-                                <rect key="frame" x="174" y="579" width="64" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...was" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-P3-1YA">
+                                <rect key="frame" x="158" y="536" width="98" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gI9-ss-lxB">
-                                <rect key="frame" x="93" y="619" width="228" height="92.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gI9-ss-lxB">
+                                <rect key="frame" x="93" y="592" width="228" height="92.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Bv-Mw-DUX">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="6Bv-Mw-DUX">
                                         <rect key="frame" x="19" y="0.0" width="190" height="92.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14117647059999999" green="0.20392156859999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.43137254899999999" green="0.5450980392" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
@@ -465,10 +464,28 @@
                                     <constraint firstAttribute="height" constant="92.5" id="NNd-lB-xQ5"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyg-qy-SnU">
-                                <rect key="frame" x="93" y="734" width="228" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="tad-Ns-wf8">
+                                <rect key="frame" x="0.0" y="454" width="414" height="76"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="tmk-0S-9QM"/>
+                                </constraints>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="568018800">
+                                    <!--2019-01-01 07:00:00 +0000-->
+                                </date>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlightsToday" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyg-qy-SnU">
+                                <rect key="frame" x="93" y="704.5" width="228" height="50"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jZR-Cq-tos"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Weight">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -480,13 +497,32 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="1It-8d-lLP" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="93" id="04P-Dv-ZBv"/>
+                            <constraint firstItem="1It-8d-lLP" firstAttribute="top" secondItem="r77-MB-fhC" secondAttribute="bottom" constant="20" id="17N-SR-9JT"/>
+                            <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="tad-Ns-wf8" secondAttribute="trailing" id="3cj-s3-NOJ"/>
+                            <constraint firstItem="IiK-bM-Iej" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="95" id="5Gy-2t-kvy"/>
+                            <constraint firstItem="3dg-P3-1YA" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="158" id="5Ua-hc-hAn"/>
                             <constraint firstItem="y88-6v-afX" firstAttribute="top" secondItem="ARZ-LG-U2G" secondAttribute="top" constant="20" id="E0W-wz-c8x"/>
                             <constraint firstItem="y88-6v-afX" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="69" id="HoD-vM-vv1"/>
+                            <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="1It-8d-lLP" secondAttribute="trailing" constant="93" id="J43-MG-MGM"/>
+                            <constraint firstItem="gI9-ss-lxB" firstAttribute="top" secondItem="3dg-P3-1YA" secondAttribute="bottom" constant="8" id="UAg-4X-7vL"/>
+                            <constraint firstItem="M1e-mF-9HM" firstAttribute="top" secondItem="1It-8d-lLP" secondAttribute="bottom" constant="8" id="W7O-26-JhE"/>
                             <constraint firstItem="gI9-ss-lxB" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="93" id="YIm-BX-jdA"/>
                             <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="gI9-ss-lxB" secondAttribute="trailing" constant="93" id="aOb-ff-45t"/>
+                            <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="M1e-mF-9HM" secondAttribute="trailing" constant="68" id="aqc-lj-mv5"/>
                             <constraint firstItem="r77-MB-fhC" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="93" id="bLS-LS-hkd"/>
                             <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="y88-6v-afX" secondAttribute="trailing" constant="68" id="eEU-o2-oMR"/>
+                            <constraint firstItem="M1e-mF-9HM" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="69" id="eqA-9u-lfX"/>
+                            <constraint firstItem="IiK-bM-Iej" firstAttribute="top" secondItem="M1e-mF-9HM" secondAttribute="bottom" constant="6" id="hEj-H6-G69"/>
+                            <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="fyg-qy-SnU" secondAttribute="trailing" constant="93" id="hXh-TR-FIJ"/>
+                            <constraint firstItem="tad-Ns-wf8" firstAttribute="leading" secondItem="6Hp-zq-cpW" secondAttribute="leading" id="kZb-8N-NIW"/>
+                            <constraint firstItem="3dg-P3-1YA" firstAttribute="top" secondItem="tad-Ns-wf8" secondAttribute="bottom" constant="6" id="ll3-wY-d2U"/>
+                            <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="IiK-bM-Iej" secondAttribute="trailing" constant="94" id="qV2-lb-63G"/>
+                            <constraint firstItem="fyg-qy-SnU" firstAttribute="top" secondItem="gI9-ss-lxB" secondAttribute="bottom" constant="20" id="t3A-1l-Xla"/>
+                            <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="3dg-P3-1YA" secondAttribute="trailing" constant="158" id="tt4-AW-P3Z"/>
+                            <constraint firstItem="fyg-qy-SnU" firstAttribute="leading" secondItem="ARZ-LG-U2G" secondAttribute="leading" constant="93" id="wfj-9h-04h"/>
                             <constraint firstItem="ARZ-LG-U2G" firstAttribute="trailing" secondItem="r77-MB-fhC" secondAttribute="trailing" constant="93" id="xMH-gE-VHK"/>
+                            <constraint firstItem="tad-Ns-wf8" firstAttribute="top" secondItem="IiK-bM-Iej" secondAttribute="bottom" constant="10" id="xaq-0a-9hp"/>
                             <constraint firstItem="r77-MB-fhC" firstAttribute="top" secondItem="y88-6v-afX" secondAttribute="bottom" constant="10" id="yEc-0p-5ab"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ARZ-LG-U2G"/>
@@ -499,14 +535,14 @@
                         <outlet property="specificDateWeightTextField" destination="6Bv-Mw-DUX" id="XIH-YE-REe"/>
                         <outlet property="specificWeightMinusButton" destination="vIK-xX-3bg" id="zbI-7z-tF3"/>
                         <outlet property="specificWeightPlusButton" destination="Ss7-uz-smq" id="IMH-Zs-Zm1"/>
+                        <outlet property="todaysWeightMinusButton" destination="vRT-S7-kIv" id="LPo-ra-cg5"/>
+                        <outlet property="todaysWeightPlusButton" destination="VjC-fI-J7E" id="2kb-Fi-Awl"/>
                         <outlet property="todaysWeightTextField" destination="YXf-Xa-waT" id="CDy-NC-mud"/>
-                        <outlet property="weightMinusButton" destination="vRT-S7-kIv" id="9eW-gq-Acq"/>
-                        <outlet property="weightPlusButton" destination="VjC-fI-J7E" id="Rga-9H-loZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvs-Ap-eLS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791" y="21"/>
+            <point key="canvasLocation" x="789.85507246376812" y="20.758928571428569"/>
         </scene>
     </scenes>
     <resources>

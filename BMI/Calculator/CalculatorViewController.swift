@@ -109,6 +109,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func maleButtonPressed(_ sender: UIButton) {
     
         maleButton.isSelected = true
+        femaleButton.isSelected = false
         maleButton.backgroundColor = UIColor.init(red: 114.0/255.0, green: 144.0/255.0, blue: 157.0/255.0, alpha: 1.0)
         femaleButton.backgroundColor = UIColor.init(red: 52.0/255.0, green: 68.0/255.0, blue: 79.0/255.0, alpha: 1.0)
     }
@@ -118,44 +119,42 @@ class CalculatorViewController: UIViewController {
     @IBAction func femaleButtonPressed(_ sender: UIButton) {
         
         femaleButton.isSelected = true
+        maleButton.isSelected = false
         femaleButton.backgroundColor = UIColor.init(red: 114.0/255.0, green: 144.0/255.0, blue: 157.0/255.0, alpha: 1.0)
         maleButton.backgroundColor = UIColor.init(red: 52.0/255.0, green: 68.0/255.0, blue: 79.0/255.0, alpha: 1.0)
     }
     
 
 
-    
+    //FIXME: Save user's data
     
     @IBAction func saveUserData(_ sender: UIButton) {
         
         let user = User()
-
-        if maleButton.isSelected {
-            user.gender = GenderType.male
-        }
-        
-        if femaleButton.isSelected {
-            user.gender = GenderType.female
-        }
-        
-        user.height = Double(heightTextField.text!)!
-        user.weight = Double(weightTextField.text!)!
-        user.weightGoal = Double(goalTextField.text!)!
-        user.age = Int(ageTextField.text!)!
         
         Database.current.add(entity: user) {
+       
+            if self.maleButton.isSelected {
+              user.gender = GenderType.male
+          }
+          
+            if self.femaleButton.isSelected {
+              user.gender = GenderType.female
+          }
+          
+            user.height = Double(self.heightTextField.text!)!
+            user.weight = Double(self.weightTextField.text!)!
+            user.weightGoal = Double(self.goalTextField.text!)!
+            user.age = Int(self.ageTextField.text!)!
             
         }
         
     }
-
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         self.view.endEditing(true)
         self.view.frame.origin.y = 0
-      
     }
     
 }

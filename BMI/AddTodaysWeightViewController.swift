@@ -8,33 +8,14 @@
 
 import UIKit
 
-class AddTodaysWeightViewController: UIViewController {
+class AddTodaysWeightViewController : UIViewController {
 
 
         var weightTimer = Timer()
         let defaultWeight: String = "50.0"
     
-        override func viewDidLoad() {
-            super.viewDidLoad()
-
-            // Do any additional setup after loading the view.
-        }
         
-
-        /*
-        // MARK: - Navigation
-
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // Get the new view controller using segue.destination.
-            // Pass the selected object to the new view controller.
-        }
-        */
-
-
-    
-        
-            //MARK: Outlets
+//MARK: Outlets
         
         @IBOutlet weak var todaysWeightTextField: UITextField! {
             didSet {
@@ -42,15 +23,15 @@ class AddTodaysWeightViewController: UIViewController {
             }
         }
         
-        @IBOutlet weak var weightMinusButton: UIButton! {
+        @IBOutlet weak var todaysWeightMinusButton: UIButton! {
             didSet {
-                weightMinusButton.layer.cornerRadius = weightMinusButton.frame.size.height / 2
+                todaysWeightMinusButton.layer.cornerRadius = todaysWeightMinusButton.frame.size.height / 2
             }
         }
         
-        @IBOutlet weak var weightPlusButton: UIButton! {
+        @IBOutlet weak var todaysWeightPlusButton: UIButton! {
             didSet {
-                weightPlusButton.layer.cornerRadius = weightPlusButton.frame.size.height / 2
+                todaysWeightPlusButton.layer.cornerRadius = todaysWeightPlusButton.frame.size.height / 2
             }
         }
         
@@ -86,55 +67,94 @@ class AddTodaysWeightViewController: UIViewController {
             }
         }
         
-            //MARK: Actions
+//MARK: Actions
         
-        @IBAction func addTodaysWeightTextFieldEditingDidBegin(_ sender: UITextField) {
+    @IBAction func addTodaysWeightTextFieldEditingDidBegin(_ sender: UITextField) {
             
-            todaysWeightTextField.text = defaultWeight
+        todaysWeightTextField.text = defaultWeight
+        todaysWeightTextField.isEnabled = false
         }
         
+    @IBAction func todaysWeightMinusButtonIsTouchedDown(_ sender: UIButton) {
         
-        @IBAction func weightMinusButtonTouchedDown(_ sender: UIButton) {
+    
+        todaysWeightMinusButton.backgroundColor = UIColor.white
+        todaysWeightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
+
+        
+    }
+        
+    @IBAction func todaysWeightMinusButtonIsTouchedUpInside(_ sender: UIButton) {
+        
+        todaysWeightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+        weightTimer.invalidate()
+        
+    }
+        
+    
+    @IBAction func todaysWeightMinusButtonIsTouchedDragOutside(_ sender: UIButton) {
+        
+        weightTimer.invalidate()
+        todaysWeightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
+        
+    }
+    
+    @IBAction func todaysWeightPlusButtonIsTouchedDown(_ sender: UIButton) {
+        
+        todaysWeightPlusButton.backgroundColor = UIColor.white
+        todaysWeightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+    }
+    
+        
+    @IBAction func todaysWeightPlusButtonIsTouchedUpInside(_ sender: UIButton) {
+        
+        todaysWeightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+        weightTimer.invalidate()
+        
+    }
+    
+        
+    @IBAction func todaysWeightPlusButtonIsTouchedDragOutside(_ sender: UIButton) {
+        
+        weightTimer.invalidate()
+        todaysWeightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
+    }
+    
+
+    //FIXME: Today's Weight adding function
+    
+    @IBAction func addTodaysWeightButtonIsTouchedDown(_ sender: UIButton) {
+        
+        let user = User()
+        
+        Database.current.add(entity: user) {
+            user.weight = Double(self.todaysWeightTextField.text!)!
+        }
+        
+        func addTodaysWeight() -> [PointEntry] {
+            var result: [PointEntry] = []
             
-            weightMinusButton.backgroundColor = UIColor.white
-            weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
-            weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
-        }
-        
-        
-        @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
             
-             weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-             weightTimer.invalidate()
-        }
-        
-        @IBAction func weightMinusButtonTouchedDragOuside(_ sender: UIButton) {
+                let value = User.current!.weight
             
-            weightTimer.invalidate()
-             weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
-        }
-        
-        @IBAction func weightPlusButtonTouchedDown(_ sender: UIButton) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "d MMM"
+                let today = Date()
+                    
+                result.append(PointEntry(value: Int(value), label: formatter.string(from: today)))
             
-            weightPlusButton.backgroundColor = UIColor.white
-            weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
-            weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
-        }
         
-        @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
-            
-            weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-            weightTimer.invalidate()
+            return result
         }
-        
-        @IBAction func weightPlusButtonTouchedDragOutside(_ sender: UIButton) {
-            weightTimer.invalidate()
-            weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
-        }
+    }
+    
         
         @IBAction func specificDateWeightTextFieldEditingDidBegin(_ sender: UITextField) {
             
             specificDateWeightTextField.text = defaultWeight
+            specificDateWeightTextField.isEnabled = false
         }
         
         @IBAction func specificWeightMinusButtonTouchedDown(_ sender: UIButton) {
@@ -176,7 +196,30 @@ class AddTodaysWeightViewController: UIViewController {
             specificWeightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
         }
         
+    
+    //FIXME: Specific Weight adding function
         @IBAction func addSpecificDateWeightTouchedDown(_ sender: UIButton) {
+        
+            let user = User()
+            
+            Database.current.add(entity: user) {
+                user.weight = Double(self.specificDateWeightTextField.text!)!
+            }
+            
+            func addSpecificWeight() -> [PointEntry] {
+                var result: [PointEntry] = []
+                
+                let value = User.current!.weight
+            
+                let formatter = DateFormatter()
+                formatter.dateFormat = "d MMM"
+                let date = datePicker.date
+                    
+                result.append(PointEntry(value: Int(value), label: formatter.string(from: date)))
+
+                return result
+            }
+            
         }
         
     }
