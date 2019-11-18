@@ -50,7 +50,7 @@ class OnboardingViewController: UIPageViewController {
     func controller(at index: Int) -> OnboardingContentViewController? {
         guard index < items.count && index >= 0 else { return nil }
         let item = items[index]
-        let contentViewController = Storyboard.Onboarding.onboardingContentViewController
+        let contentViewController = Storyboard(.onboarding).controller(OnboardingContentViewController.self)
         contentViewController.item = item
         return contentViewController
     }

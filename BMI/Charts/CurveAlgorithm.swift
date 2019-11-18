@@ -32,6 +32,10 @@ class CurveAlgorithm {
         }
         
         // Calculate good control points
+        if points.count == 1 {
+            result.append(CurvedSegment(controlPoint1: .zero, controlPoint2: .zero))
+            return result
+        }
         for i in 1..<points.count-1 {
             /// A temporary control point
             let M = result[i-1].controlPoint2

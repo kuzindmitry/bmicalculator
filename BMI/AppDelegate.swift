@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if !Storage.default.isOnboardingPresented {
-            window?.rootViewController = Storyboard.Onboarding.initialViewController
+            window?.rootViewController = Storyboard(.onboarding).initialController
         }
         return true
     }

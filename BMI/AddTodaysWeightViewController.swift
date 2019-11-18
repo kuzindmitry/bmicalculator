@@ -126,27 +126,24 @@ class AddTodaysWeightViewController : UIViewController {
     //FIXME: Today's Weight adding function
     
     @IBAction func addTodaysWeightButtonIsTouchedDown(_ sender: UIButton) {
-        
-        let user = User()
-        
-        Database.current.add(entity: user) {
-            user.weight = Double(self.todaysWeightTextField.text!)!
+        let currentValue: Double = Double(todaysWeightTextField.text ?? "") ?? 0
+        let metric: WeightMetric = WeightMetric()
+        let metrics: [WeightMetric] = Database.current.get()
+        if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
+            metric.change = currentValue - lastMetric.value
+        } else if let user: User = User.current {
+            metric.change = currentValue - user.weight
+        } else {
+            metric.change = 0
         }
+        metric.created = Date().timestamp
+        metric.id = UUID().uuidString
+        metric.value = currentValue
         
-        func addTodaysWeight() -> [PointEntry] {
-            var result: [PointEntry] = []
-            
-            
-                let value = User.current!.weight
-            
-                let formatter = DateFormatter()
-                formatter.dateFormat = "d MMM"
-                let today = Date()
-                    
-                result.append(PointEntry(value: Int(value), label: formatter.string(from: today)))
-            
-        
-            return result
+        Database.current.add(entity: metric) {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     

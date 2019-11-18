@@ -16,7 +16,8 @@ class WeightMetric: DataEntity {
     //MARK: - Variables
     
     internal var id: String = UUID().uuidString
-    var created: Date = Date()
+    
+    var created: Int64 = 0
     var value: Double = 0
     var change: Double = 0
     var entity: WeightMetricEntity?
@@ -26,7 +27,7 @@ class WeightMetric: DataEntity {
     
     required init(with entity: WeightMetricEntity) {
         id = entity.id ?? ""
-        created = entity.created ?? Date()
+        created = entity.created
         value = entity.value
         change = entity.change
     }

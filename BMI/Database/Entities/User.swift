@@ -8,8 +8,18 @@
 
 import CoreData
 
-enum GenderType {
+enum GenderType: Int {
     case male, female
+}
+
+enum WeightMetricsType: String {
+    case kg = "kg"
+    case lb = "lb"
+}
+
+enum HeightMetricsType: String {
+    case cm = "cm"
+    case ft = "ft"
 }
 
 /// User entity
@@ -25,6 +35,8 @@ class User: DataEntity {
     var weight: Double = 0
     var weightGoal: Double = 0
     var gender: GenderType = .male
+    var weightMetrics: WeightMetricsType = .kg
+    var heightMetrics: HeightMetricsType = .cm
     var entity: UserEntity?
     
     /// Current saved user
@@ -45,6 +57,8 @@ class User: DataEntity {
         gender = entity.isMale ? .male : .female
         weight = entity.weight
         weightGoal = entity.weightGoal
+        heightMetrics = HeightMetricsType(rawValue: entity.heightMetrics ?? "") ?? .cm
+        weightMetrics = WeightMetricsType(rawValue: entity.weightMetrics ?? "") ?? .kg
     }
     
     init() {}
@@ -59,6 +73,8 @@ class User: DataEntity {
         entity.isMale = gender == .male
         entity.weight = weight
         entity.weightGoal = weightGoal
+        entity.weightMetrics = weightMetrics.rawValue
+        entity.heightMetrics = heightMetrics.rawValue
     }
     
 }
