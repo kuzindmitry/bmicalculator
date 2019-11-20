@@ -40,6 +40,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var metrics: [WeightMetric] = []
     
+
+    
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +60,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         chartView.dataEntries = receiveUserDetails()
         chartView.backgroundColor = .clear
         
-        //MARK: Views of User weight info
         ///Weight Goal block
         let user = User.current
         goalLabel.text = "\(user?.weightGoal ?? 0)"
@@ -72,20 +73,38 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             remainLabel.text = "Your Weight Goal is completed! Congratulations!"
         }
         
-        ///History of Weight change TableView
-           
     }
     
     //MARK: Functions
     
+    //Table View Update
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
         
-        return cell!
+        
+        let df = DateFormatter()
+        cell.weekdayLabel.text = df.weekdaySymbols[Calendar.current.component(.weekday, from: Date())]
+
+        let date = Date()
+        df.dateFormat = "MMMM, dd"
+        let day = df.string(from: date)
+        cell.dayLabel.text = day
+
+        let user = User.current
+        cell.observedWeightLabel.text = "\(user?.weight ?? 0)"
+
+        cell.selectedWeightMetric.text = user?.weightMetrics.rawValue ?? ""
+        
+        
+//        cell.weightArrowImage =
+//
+//        cell.weightDifferenceLabel.text =
+        
+        return cell
     }
     
     func receiveUserDetails() -> [PointEntry] {
@@ -126,6 +145,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
 extension Date {
+    
     var timestamp: Int64 {
         return Int64(self.timeIntervalSince1970)
     }
@@ -141,4 +161,6 @@ extension Date {
         comps.second = -1
         return Calendar.current.date(byAdding: comps, to: startOfWeek) ?? self
     }
+    
+
 }

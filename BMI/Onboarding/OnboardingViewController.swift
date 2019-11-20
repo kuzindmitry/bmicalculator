@@ -19,7 +19,7 @@ class OnboardingViewController: UIPageViewController {
     
     /// Content for pages
     var items: [OnboardingItem] = [
-        OnboardingItem(index: 0, text: "Have you ever thought about your Body Mass Index?", image: #imageLiteral(resourceName: "onboarding_0")),
+        OnboardingItem(index: 0, text: "Have you thought about your Body Mass Index?", image: #imageLiteral(resourceName: "onboarding_0")),
         OnboardingItem(index: 1, text: "Fill in your physical details and set personal goals on losing weight", image: #imageLiteral(resourceName: "onboarding_1")),
         OnboardingItem(index: 2, text: "See your timeline results in graphics", image: #imageLiteral(resourceName: "onboarding_2"))
     ]

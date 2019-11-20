@@ -42,6 +42,8 @@ class CalculatorViewController: UIViewController {
         ageTextField.delegate = self
         goalTextField.delegate = self
         
+
+        
         heightTextField.setCircleRadius()
         weightTextField.setCircleRadius()
         ageTextField.setCircleRadius()

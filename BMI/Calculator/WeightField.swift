@@ -33,6 +33,8 @@ class WeightField: UIView {
     
     //MARK: Variables and Constants
     var weightTimer = Timer()
+    var slowTimer = Timer()
+    var fastTimer = Timer()
     let defaultWeight: String = "50.0"
     
 }
@@ -70,7 +72,23 @@ extension WeightField {
         
         weightPlusButton.backgroundColor = UIColor.white
         weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
-        weightTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+        
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let increaseWeight: Double = 0.1
+        let increasedWeightResult = defaultWeightNumber + increaseWeight
+        weightTextField.text = String(format: "%.1f", increasedWeightResult)
+        
+//        var timeInterval: Double {
+//            get { 0.5 }
+//            set(newTimeInterval) { 0.025 }
+//        }
+        let timeInterval: Double = 0.5
+        slowTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+        
+//        fastTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+        
+        
+//        weightTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
 
         
         
@@ -81,6 +99,8 @@ extension WeightField {
         
         weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
         weightTimer.invalidate()
+        slowTimer.invalidate()
+        fastTimer.invalidate()
         
     }
     
@@ -93,6 +113,8 @@ extension WeightField {
     @IBAction func weightPlusButtonOutOfArea(_ sender: UIButton) {
         
         weightTimer.invalidate()
+        slowTimer.invalidate()
+        fastTimer.invalidate()
         weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
     }
 }
