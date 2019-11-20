@@ -8,48 +8,45 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     
     //MARK: Outlets
     
     @IBOutlet weak var chartView: ChartView!
-    
     @IBOutlet weak var curvesExplanation: UIView!
     
     @IBOutlet weak var goalView: UIView!
-    
-    @IBOutlet weak var currentWeightView: UIView!
-    
-    @IBOutlet weak var goalLabel: UILabel! 
-    
+    @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var weightMetricLabel: UILabel!
     
+    @IBOutlet weak var currentWeightView: UIView!
     @IBOutlet weak var currentWeightLabel: UILabel!
-    
     @IBOutlet weak var remainLabel: UILabel!
+
+
     
-    @IBOutlet weak var historyTableView: UITableView!
-    
-    @IBOutlet weak var addTodaysWeightFromNextvcButton: UIButton! {
-        didSet {
-            addTodaysWeightFromNextvcButton.layer.cornerRadius = addTodaysWeightFromNextvcButton.frame.size.height / 5
-        }
-    }
+    @IBOutlet weak var addTodaysWeightFromNextvcButton: UIButton!
     
     @IBAction func addTodaysWeightButtonTouchedDown(_ sender: UIButton) {
-        
         performSegue(withIdentifier: "toTodaysWeight", sender: nil)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+        
     }
     
     var metrics: [WeightMetric] = []
     
+    //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTodaysWeightFromNextvcButton.layer.cornerRadius = addTodaysWeightFromNextvcButton.frame.size.height / 5
+        
+        ///Chart View preparation
         let today: Date = Date()
         let weekStartDate = today.startOfWeek.timestamp
         let weekEndDate = today.endOfWeek.timestamp
@@ -61,18 +58,35 @@ class MainViewController: UIViewController {
         chartView.dataEntries = receiveUserDetails()
         chartView.backgroundColor = .clear
         
+        //MARK: Views of User weight info
+        ///Weight Goal block
         let user = User.current
         goalLabel.text = "\(user?.weightGoal ?? 0)"
         weightMetricLabel.text = user?.weightMetrics.rawValue ?? ""
         
+        ///Current Weight block
+        currentWeightLabel.text = "\(user?.weight ?? 0)"
+        let weightDifference: Double = ((user?.weightGoal ?? 0) - (user?.weight ?? 0))
+        remainLabel.text = "\(weightDifference) \(user?.weightMetrics.rawValue ?? "") is remain"
+        if weightDifference > 0 {
+            remainLabel.text = "Your Weight Goal is completed! Congratulations!"
+        }
         
-        
-        
-        
+        ///History of Weight change TableView
+           
     }
     
     //MARK: Functions
-    //FIXME: User's first weight input
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+        return cell!
+    }
     
     func receiveUserDetails() -> [PointEntry] {
         var result: [PointEntry] = []
@@ -106,6 +120,10 @@ class MainViewController: UIViewController {
     
     
 }
+
+//MARK: Extensions
+
+
 
 extension Date {
     var timestamp: Int64 {

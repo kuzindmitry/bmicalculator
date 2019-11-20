@@ -12,6 +12,21 @@ import CoreData
 
 class CalculatorViewController: UIViewController {
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var maleButtonContainer: UIView!
+    @IBOutlet weak var femaleButtonContainer: UIView!
+    
+    @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var goalTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var heightSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var weightSegmentedControl: UISegmentedControl!
+    
     let segmentedControlsTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 52.0/255.0, green: 68.0/255.0, blue: 79.0/255.0, alpha: 1.0)]
     
     var gender: GenderType = .male
@@ -31,6 +46,8 @@ class CalculatorViewController: UIViewController {
         weightTextField.setCircleRadius()
         ageTextField.setCircleRadius()
         goalTextField.setCircleRadius()
+        
+        saveButton.setCircleRadius()
         
         updateGenderButtons()
         
@@ -52,20 +69,7 @@ class CalculatorViewController: UIViewController {
     }
     
     
-    // MARK: - Outlets
-    
-    @IBOutlet weak var maleButtonContainer: UIView!
-    @IBOutlet weak var femaleButtonContainer: UIView!
-    
-    @IBOutlet weak var heightTextField: UITextField!
-    @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var goalTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    
-    @IBOutlet weak var saveButton: UIButton!
-    
-    @IBOutlet weak var heightSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var weightSegmentedControl: UISegmentedControl!
+
     
     // MARK: - Actions
     
@@ -122,10 +126,10 @@ class CalculatorViewController: UIViewController {
     
 }
 
-// MARK: - Delegates
+// MARK: - Extensions
 
 extension CalculatorViewController : UITextFieldDelegate {
-    // UITextFieldDelegate
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = ".0123456789"
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
@@ -160,6 +164,8 @@ extension CalculatorViewController : UITextFieldDelegate {
         }
     }
 }
+
+
 extension UITextField {
     
     func setCircleRadius() {

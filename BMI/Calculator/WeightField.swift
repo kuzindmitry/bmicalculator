@@ -50,16 +50,15 @@ extension WeightField {
         weightMinusButton.backgroundColor = UIColor.white
         weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
+        
         weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
-    
+        
     }
     
 
     @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
         
         weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-       
-        
         weightTimer.invalidate()
         
     }
@@ -71,8 +70,9 @@ extension WeightField {
         
         weightPlusButton.backgroundColor = UIColor.white
         weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        weightTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+
         
-        weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
         
     }
     
@@ -80,7 +80,6 @@ extension WeightField {
     @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
         
         weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-        
         weightTimer.invalidate()
         
     }

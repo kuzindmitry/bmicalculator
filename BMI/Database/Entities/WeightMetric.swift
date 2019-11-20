@@ -18,6 +18,7 @@ class WeightMetric: DataEntity {
     internal var id: String = UUID().uuidString
     
     var created: Int64 = 0
+//    var created: Int64 = 0
     var value: Double = 0
     var change: Double = 0
     var entity: WeightMetricEntity?
