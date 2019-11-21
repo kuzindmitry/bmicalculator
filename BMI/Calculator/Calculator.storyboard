@@ -119,13 +119,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tWk-th-2LJ">
-                                <rect key="frame" x="40" y="301" width="354" height="445"/>
+                                <rect key="frame" x="40" y="301" width="354" height="465"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Qfv-8h-y53">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="445"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="465"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5a3-Mc-XzU">
-                                                <rect key="frame" x="0.0" y="0.0" width="96" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="97.5"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5kI-aP-q4K">
                                                         <rect key="frame" x="0.0" y="31" width="75" height="32"/>
@@ -140,7 +140,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sie-Y9-Dcw">
-                                                <rect key="frame" x="0.0" y="117.5" width="96" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="122.5" width="96" height="97.5"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ghm-WW-6y3">
                                                         <rect key="frame" x="0.0" y="31" width="75" height="32"/>
@@ -155,7 +155,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcP-7x-6tU">
-                                                <rect key="frame" x="0.0" y="235" width="96" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="245" width="96" height="97.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="goal" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="eby-Mb-JC7">
                                                         <rect key="frame" x="14" y="31" width="46.5" height="30"/>
@@ -168,7 +168,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFJ-21-5P7">
-                                                <rect key="frame" x="0.0" y="352.5" width="96" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="367.5" width="96" height="97.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="age" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ygx-lF-DJn">
                                                         <rect key="frame" x="18" y="30" width="41" height="30"/>
@@ -188,23 +188,26 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-4Q-F0E">
-                                        <rect key="frame" x="126" y="0.0" width="228" height="445"/>
+                                        <rect key="frame" x="126" y="0.0" width="228" height="465"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jp1-z1-qu7">
-                                                <rect key="frame" x="0.0" y="0.0" width="228" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="228" height="97.5"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="167" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="7Ts-wq-yY8">
-                                                        <rect key="frame" x="19" y="0.0" width="190" height="92.5"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="160" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="7Ts-wq-yY8">
+                                                        <rect key="frame" x="19" y="0.0" width="190" height="97.5"/>
                                                         <color key="backgroundColor" red="0.17254901959999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" red="0.44705882349999998" green="0.56470588239999997" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                                 <color key="value" red="0.14543616770000001" green="0.19664314390000001" blue="0.23667007679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="heightTextFieldEditingDidBegin:" destination="q1U-2H-SdS" eventType="editingDidBegin" id="b8T-kJ-6FI"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -216,13 +219,13 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2A-EU-h61">
-                                                <rect key="frame" x="0.0" y="117.5" width="228" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="122.5" width="228" height="97.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YS-Zg-3tw" customClass="WeightField" customModule="BMI" customModuleProvider="target">
-                                                        <rect key="frame" x="19" y="0.0" width="190" height="92.5"/>
+                                                        <rect key="frame" x="19" y="0.0" width="190" height="97.5"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="50.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iPT-iO-04S">
-                                                                <rect key="frame" x="0.0" y="0.0" width="190" height="92.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="190" height="97.5"/>
                                                                 <color key="backgroundColor" red="0.17254901959999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="textColor" red="0.44705882349999998" green="0.56470588239999997" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -235,6 +238,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="weightTextFieldDidBegin:" destination="4YS-Zg-3tw" eventType="editingDidBegin" id="AHw-vg-Y5U"/>
+                                                                    <action selector="weightTextFieldEditingDidBegin:" destination="q1U-2H-SdS" eventType="editingDidBegin" id="CPH-Rl-yOc"/>
                                                                     <outlet property="delegate" destination="4YS-Zg-3tw" id="VEJ-5M-B3G"/>
                                                                 </connections>
                                                             </textField>
@@ -266,6 +270,9 @@
                                                         <state key="normal" title="-">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="NO"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="weightMinusButtonOutOfArea:" destination="4YS-Zg-3tw" eventType="touchDragOutside" id="Cxt-jm-ZMu"/>
                                                             <action selector="weightMinusButtonTouchedDown:" destination="4YS-Zg-3tw" eventType="touchDown" id="e5m-5w-ZXE"/>
@@ -313,10 +320,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHF-H8-6Zg">
-                                                <rect key="frame" x="0.0" y="235" width="228" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="245" width="228" height="97.5"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="52.5" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-oV-wXi">
-                                                        <rect key="frame" x="19" y="0.0" width="190" height="92.5"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="45.0" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-oV-wXi">
+                                                        <rect key="frame" x="19" y="0.0" width="190" height="97.5"/>
                                                         <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" red="0.44769704339999999" green="0.56463783980000004" blue="0.61554914709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -327,6 +334,9 @@
                                                                 <color key="value" red="0.14543616770000001" green="0.19664314390000001" blue="0.23667007679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="goalTextFieldEditingDidBegin:" destination="q1U-2H-SdS" eventType="editingDidBegin" id="ASh-Ka-Y4A"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -338,10 +348,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dM-gx-63e">
-                                                <rect key="frame" x="0.0" y="352.5" width="228" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="367.5" width="228" height="97.5"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="29" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="QSK-QI-CJ1">
-                                                        <rect key="frame" x="19" y="0.0" width="190" height="92.5"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="32" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="QSK-QI-CJ1">
+                                                        <rect key="frame" x="19" y="0.0" width="190" height="97.5"/>
                                                         <color key="backgroundColor" red="0.17305487389999999" green="0.2469858825" blue="0.29402831200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" red="0.44769704339999999" green="0.56463783980000004" blue="0.61554914709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -352,6 +362,9 @@
                                                                 <color key="value" red="0.14543616770000001" green="0.19664314390000001" blue="0.23667007679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="ageTextFieldEditingDidBegin:" destination="q1U-2H-SdS" eventType="editingDidBegin" id="6NN-e3-hdr"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -382,7 +395,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teg-gf-Nsm">
-                                <rect key="frame" x="30" y="779" width="354" height="60"/>
+                                <rect key="frame" x="30" y="799" width="354" height="60"/>
                                 <color key="backgroundColor" red="0.120521737" green="0.46988988539999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="0z8-oJ-AQ1"/>
@@ -428,6 +441,8 @@
                         <outlet property="maleButtonContainer" destination="5T8-T2-XSU" id="sjp-Xv-PQ2"/>
                         <outlet property="saveButton" destination="teg-gf-Nsm" id="rnR-ci-Rbg"/>
                         <outlet property="view" destination="vFE-Gc-iJm" id="yMr-uI-2kT"/>
+                        <outlet property="weightMinusButton" destination="gbO-OP-eC8" id="LJL-AU-VRF"/>
+                        <outlet property="weightPlusButton" destination="gUC-eh-HoP" id="zwH-2G-hTU"/>
                         <outlet property="weightSegmentedControl" destination="ghm-WW-6y3" id="V8d-yt-kb4"/>
                         <outlet property="weightTextField" destination="iPT-iO-04S" id="BaU-31-Nz8"/>
                     </connections>

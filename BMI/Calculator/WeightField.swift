@@ -13,36 +13,29 @@ class WeightField: UIView {
     
     //MARK: Outlets
 
-    @IBOutlet public weak var weightTextField: UITextField! {
-     didSet {
-            weightTextField.layer.cornerRadius = weightTextField.frame.size.height / 2
-        }
-    }
+    @IBOutlet weak var weightTextField: UITextField!
     
-    @IBOutlet weak var weightMinusButton: UIButton! {
-        didSet {
-            weightMinusButton.layer.cornerRadius = weightMinusButton.frame.size.height / 2
-        }
-    }
+    @IBOutlet weak var weightMinusButton: UIButton!
 
-    @IBOutlet weak var weightPlusButton: UIButton! {
-        didSet {
-            weightPlusButton.layer.cornerRadius = weightPlusButton.frame.size.height / 2
-        }
-    }
+    @IBOutlet weak var weightPlusButton: UIButton!
+    
+
     
     //MARK: Variables and Constants
-    var weightTimer = Timer()
+    
     var slowTimer = Timer()
     var fastTimer = Timer()
     let defaultWeight: String = "50.0"
-    
 }
 
 //MARK: - Actions
 extension WeightField {
     
+    
+    
     @IBAction func weightTextFieldDidBegin(_ sender: UITextField) {
+        
+        
         
         weightTextField.text = defaultWeight
     }
@@ -52,16 +45,31 @@ extension WeightField {
         weightMinusButton.backgroundColor = UIColor.white
         weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
+        let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        let decreaseWeight: Double = -0.1
+        let decreasedWeightResult = defaultWeightNumber + decreaseWeight
+        weightTextField.text = String(format: "%.1f", decreasedWeightResult)
         
-        weightTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
+        let slowTimeInterval: Double = 0.5
+        let fastTimeInterval: Double = 0.05
+        slowTimer = Timer.scheduledTimer(timeInterval: slowTimeInterval, target: self, selector: #selector(timerDecreaseAction), userInfo: nil, repeats: true)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.slowTimer.invalidate()
+            if self.weightMinusButton.isTouchInside == true {
+                self.fastTimer = Timer.scheduledTimer(timeInterval: fastTimeInterval, target: self, selector: #selector(self.timerDecreaseAction), userInfo: nil, repeats: true)
+            } else {
+                self.fastTimer.invalidate()
+            }
+        }
     }
-    
 
     @IBAction func weightMinusButtonTouchedUpInside(_ sender: UIButton) {
         
         weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-        weightTimer.invalidate()
+        
+        slowTimer.invalidate()
+        fastTimer.invalidate()
         
     }
     
@@ -78,49 +86,54 @@ extension WeightField {
         let increasedWeightResult = defaultWeightNumber + increaseWeight
         weightTextField.text = String(format: "%.1f", increasedWeightResult)
         
-//        var timeInterval: Double {
-//            get { 0.5 }
-//            set(newTimeInterval) { 0.025 }
-//        }
-        let timeInterval: Double = 0.5
-        slowTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
+        let slowTimeInterval: Double = 0.5
+        let fastTimeInterval: Double = 0.05
+        slowTimer = Timer.scheduledTimer(timeInterval: slowTimeInterval, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
         
-//        fastTimer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
-        
-        
-//        weightTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(timerIncreaseAction), userInfo: nil, repeats: true)
-
-        
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.slowTimer.invalidate()
+            if self.weightPlusButton.isHighlighted == true && self.weightPlusButton.isTouchInside == true {
+                self.fastTimer = Timer.scheduledTimer(timeInterval: fastTimeInterval, target: self, selector: #selector(self.timerIncreaseAction), userInfo: nil, repeats: true)
+            } else {
+                self.fastTimer.invalidate()
+            }
+        }
     }
-    
     
     @IBAction func weightPlusButtonTouchedUpInside(_ sender: UIButton) {
         
         weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 75.0/255.0, alpha: 1.0)
-        weightTimer.invalidate()
+        
         slowTimer.invalidate()
         fastTimer.invalidate()
         
+        
     }
+    
     
     @IBAction func weightMinusButtonOutOfArea(_ sender: UIButton) {
         
-        weightTimer.invalidate()
+        slowTimer.invalidate()
+        fastTimer.invalidate()
         weightMinusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
     }
     
     @IBAction func weightPlusButtonOutOfArea(_ sender: UIButton) {
         
-        weightTimer.invalidate()
+      
         slowTimer.invalidate()
         fastTimer.invalidate()
+        
         weightPlusButton.backgroundColor = UIColor.init(red: 41.0/255.0, green: 63.0/255.0, blue: 79.0/255.0, alpha: 1.0)
     }
+    
+
 }
 
 //MARK: - Subactions
 extension WeightField {
+    
+
     
     @objc func timerDecreaseAction() {
         
@@ -139,5 +152,4 @@ extension WeightField {
         weightTextField.text = String(format: "%.1f", increasedWeightResult)
         
     }
-    
 }

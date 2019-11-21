@@ -21,6 +21,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var weightMinusButton: UIButton!
+    @IBOutlet weak var weightPlusButton: UIButton!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -42,16 +44,18 @@ class CalculatorViewController: UIViewController {
         ageTextField.delegate = self
         goalTextField.delegate = self
         
-
-        
+    
         heightTextField.setCircleRadius()
         weightTextField.setCircleRadius()
+        weightMinusButton.setCircleRadius()
+        weightPlusButton.setCircleRadius()
         ageTextField.setCircleRadius()
         goalTextField.setCircleRadius()
         
         saveButton.setCircleRadius()
         
         updateGenderButtons()
+         
         
         heightSegmentedControl.setTitleTextAttributes(segmentedControlsTextAttributes, for: .selected)
         weightSegmentedControl.setTitleTextAttributes(segmentedControlsTextAttributes, for: .selected)
@@ -75,6 +79,7 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Actions
     
+    ///Gender Buttons
     @IBAction func genderButtonTouched(_ sender: UIButton) {
         gender = GenderType(rawValue: sender.tag) ?? gender
         updateGenderButtons()
@@ -87,6 +92,41 @@ class CalculatorViewController: UIViewController {
         femaleButtonContainer.backgroundColor = gender == .female ? selectedColor : unselectedColor
     }
     
+    ///Text Fields Editing
+    @IBAction func heightTextFieldEditingDidBegin(_ sender: UITextField) {
+        
+        if heightSegmentedControl.selectedSegmentIndex == 0 {
+            heightTextField.text = "160"
+        } else {
+            heightTextField.text = "5.25"
+        }
+    }
+    
+    @IBAction func weightTextFieldEditingDidBegin(_ sender: UITextField) {
+        
+        if weightSegmentedControl.selectedSegmentIndex == 0 {
+            weightTextField.text = "50.0"
+        } else {
+            weightTextField.text = "125.0"
+        }
+    }
+    
+    @IBAction func goalTextFieldEditingDidBegin(_ sender: UITextField) {
+        
+        if weightSegmentedControl.selectedSegmentIndex == 0 {
+            goalTextField.text = "49.0"
+        } else {
+            goalTextField.text = "108"
+        }
+    }
+    
+    @IBAction func ageTextFieldEditingDidBegin(_ sender: UITextField) {
+        
+        ageTextField.text = "32"
+    }
+
+    
+    ///User's Data Saving
     @IBAction func saveUserData(_ sender: UIButton) {
         
         let user = User()
@@ -132,28 +172,33 @@ class CalculatorViewController: UIViewController {
 
 extension CalculatorViewController : UITextFieldDelegate {
     
+
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         let allowedCharacters = ".0123456789"
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharactersSet = CharacterSet (charactersIn: string)
         
-        if heightTextField.text!.count > 3 {
-            heightTextField.text?.removeLast()
+  
+        if heightSegmentedControl.selectedSegmentIndex == 0 {
+            if heightTextField.text!.count > 2 {
+                heightTextField.text?.removeLast(3)
+            }
+        } else {
+            if heightTextField.text!.count > 3 {
+                heightTextField.text?.removeLast(4)
+            }
         }
         
-        if weightTextField.text!.count > 5 {
-            weightTextField.text?.removeLast()
-        }
-        
-        if goalTextField.text!.count > 5 {
-            goalTextField.text?.removeLast()
-        }
-        
-        if ageTextField.text!.count > 2 {
-            ageTextField.text?.removeLast()
+
+
+        if ageTextField.text!.count > 1 {
+            ageTextField.text?.removeLast(2)
         }
         
         return allowedCharactersSet.isSuperset(of: typedCharactersSet)
+        
     }
     
     @objc func keyboardWillChange (notification: Notification) {
@@ -189,6 +234,8 @@ extension UISegmentedControl {
         setTitleTextAttributes([NSAttributedString.Key.font: heightSegmentControlFont], for: UIControl.State.normal)
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: UIControl.State.normal)
+        
+        
         
     }
 }
