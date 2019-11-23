@@ -12,7 +12,7 @@ class AddTodaysWeightViewController : UIViewController {
     
     
     var weightTimer = Timer()
-    let defaultWeight: String = "50.0"
+    var defaultWeight: String = "50.0"
     
     
     //MARK: Outlets
@@ -54,7 +54,6 @@ class AddTodaysWeightViewController : UIViewController {
     @IBAction func addTodaysWeightTextFieldEditingDidBegin(_ sender: UITextField) {
         
         todaysWeightTextField.text = defaultWeight
-        todaysWeightTextField.isEnabled = false
     }
     
     @IBAction func todaysWeightMinusButtonIsTouchedDown(_ sender: UIButton) {
@@ -181,8 +180,7 @@ class AddTodaysWeightViewController : UIViewController {
         
     }
     
-    
-    //FIXME: Specific Weight adding function
+
     @IBAction func addSpecificDateWeightTouchedDown(_ sender: UIButton) {
         
         let user = User()
@@ -214,10 +212,15 @@ extension UIButton {
     
     func setCircleRadius () {
         setCornerRadius(frame.size.height/2)
+        masksToBounds()
     }
     
     func setCornerRadius (_ radius: CGFloat) {
         layer.cornerRadius = radius
+    }
+    
+    func masksToBounds() {
+        layer.masksToBounds = true
     }
 }
 

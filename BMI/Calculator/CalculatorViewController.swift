@@ -64,6 +64,8 @@ class CalculatorViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
+       
+        
         // Background image settings (coded in BackgroundImage.swift file)
         self.view.addBackground()
         
@@ -79,7 +81,7 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Actions
     
-    ///Gender Buttons
+    ///Gender Buttons functionality
     @IBAction func genderButtonTouched(_ sender: UIButton) {
         gender = GenderType(rawValue: sender.tag) ?? gender
         updateGenderButtons()
@@ -124,6 +126,7 @@ class CalculatorViewController: UIViewController {
         
         ageTextField.text = "32"
     }
+    
 
     
     ///User's Data Saving
@@ -171,7 +174,6 @@ class CalculatorViewController: UIViewController {
 // MARK: - Extensions
 
 extension CalculatorViewController : UITextFieldDelegate {
-    
 
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -180,7 +182,14 @@ extension CalculatorViewController : UITextFieldDelegate {
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharactersSet = CharacterSet (charactersIn: string)
         
-  
+        if weightTextField.text!.count > 4 {
+            weightTextField.text?.removeLast(5)
+        }
+        
+        if goalTextField.text!.count > 4 {
+            goalTextField.text?.removeLast(5)
+        }
+        
         if heightSegmentedControl.selectedSegmentIndex == 0 {
             if heightTextField.text!.count > 2 {
                 heightTextField.text?.removeLast(3)
@@ -191,8 +200,6 @@ extension CalculatorViewController : UITextFieldDelegate {
             }
         }
         
-
-
         if ageTextField.text!.count > 1 {
             ageTextField.text?.removeLast(2)
         }
@@ -207,7 +214,6 @@ extension CalculatorViewController : UITextFieldDelegate {
         
         if goalTextField.isEditing == true || ageTextField.isEditing == true {
             if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification { view.frame.origin.y = -keyboardRect.height }
-            
         }
     }
 }

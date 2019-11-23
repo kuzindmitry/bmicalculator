@@ -239,6 +239,7 @@
                                                                 <connections>
                                                                     <action selector="weightTextFieldDidBegin:" destination="4YS-Zg-3tw" eventType="editingDidBegin" id="AHw-vg-Y5U"/>
                                                                     <action selector="weightTextFieldEditingDidBegin:" destination="q1U-2H-SdS" eventType="editingDidBegin" id="CPH-Rl-yOc"/>
+                                                                    <action selector="weightTextFieldValueChanged:" destination="kht-5t-cvR" eventType="valueChanged" id="lJR-HX-GD4"/>
                                                                     <outlet property="delegate" destination="4YS-Zg-3tw" id="VEJ-5M-B3G"/>
                                                                 </connections>
                                                             </textField>
@@ -257,22 +258,15 @@
                                                         </connections>
                                                     </view>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbO-OP-eC8">
-                                                        <rect key="frame" x="0.0" y="27.5" width="38" height="38"/>
+                                                        <rect key="frame" x="0.0" y="27.5" width="43" height="43"/>
                                                         <color key="backgroundColor" red="0.17254901959999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="1tA-2h-1TJ"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="EGN-0f-o3N"/>
-                                                            <constraint firstAttribute="height" constant="38" id="MuO-qN-y7M"/>
-                                                            <constraint firstAttribute="width" constant="38" id="PQk-tn-v0S"/>
                                                             <constraint firstAttribute="width" secondItem="gbO-OP-eC8" secondAttribute="height" multiplier="1:1" id="ka4-Cc-LA3"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <state key="normal" title="-">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="NO"/>
-                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="weightMinusButtonOutOfArea:" destination="4YS-Zg-3tw" eventType="touchDragOutside" id="Cxt-jm-ZMu"/>
                                                             <action selector="weightMinusButtonTouchedDown:" destination="4YS-Zg-3tw" eventType="touchDown" id="e5m-5w-ZXE"/>
@@ -281,14 +275,10 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUC-eh-HoP">
-                                                        <rect key="frame" x="190" y="27.5" width="38" height="38"/>
+                                                        <rect key="frame" x="185" y="27.5" width="43" height="43"/>
                                                         <color key="backgroundColor" red="0.17254901959999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="38" id="C2j-La-gGQ"/>
                                                             <constraint firstAttribute="width" secondItem="gUC-eh-HoP" secondAttribute="height" multiplier="1:1" id="Lgw-hn-Bvd"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="j4f-QO-5aa"/>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="nDu-vU-tca"/>
-                                                            <constraint firstAttribute="width" constant="38" id="r40-kI-8Yz"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <state key="normal" title="+">
@@ -388,6 +378,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="465" id="CBI-2t-rfA"/>
                                     <constraint firstItem="5a3-Mc-XzU" firstAttribute="height" secondItem="jp1-z1-qu7" secondAttribute="height" id="E6l-1c-E94"/>
                                     <constraint firstItem="sie-Y9-Dcw" firstAttribute="height" secondItem="D2A-EU-h61" secondAttribute="height" id="M8w-jC-YLb"/>
                                     <constraint firstItem="gcP-7x-6tU" firstAttribute="height" secondItem="IHF-H8-6Zg" secondAttribute="height" id="Y8c-GL-WCH"/>
@@ -448,6 +439,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQR-ZI-dYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kht-5t-cvR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2104.3478260869565" y="1442.4107142857142"/>
         </scene>

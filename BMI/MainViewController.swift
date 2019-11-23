@@ -79,30 +79,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //Table View Update
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
         
-        
-        let df = DateFormatter()
-        cell.weekdayLabel.text = df.weekdaySymbols[Calendar.current.component(.weekday, from: Date())]
-
-        let date = Date()
-        df.dateFormat = "MMMM, dd"
-        let day = df.string(from: date)
-        cell.dayLabel.text = day
-
         let user = User.current
+        let df = DateFormatter()
+        let date = Date()
+    
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        
+        df.dateFormat = "EEEE"
+        cell.weekdayLabel.text = df.string(from: date.yesterday(daysBefore: indexPath.row))
+        
+        df.dateFormat = "MMMM, dd"
+        cell.dayLabel.text = df.string(from: date.yesterday(daysBefore: indexPath.row))
+        
         cell.observedWeightLabel.text = "\(user?.weight ?? 0)"
-
+        
         cell.selectedWeightMetric.text = user?.weightMetrics.rawValue ?? ""
-        
-        
-//        cell.weightArrowImage =
-//
-//        cell.weightDifferenceLabel.text =
         
         return cell
     }
@@ -137,7 +133,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return result
     }
     
-    
 }
 
 //MARK: Extensions
@@ -162,5 +157,18 @@ extension Date {
         return Calendar.current.date(byAdding: comps, to: startOfWeek) ?? self
     }
     
+    func yesterday(daysBefore: Int) -> Date {
+        
+        var dateComponents = DateComponents()
+        
+        if daysBefore >= 1 {
+            dateComponents.setValue(-(daysBefore), for: .day) // -1 day
+        }
+
+        let now = Date() // Current date
+        let yesterday = Calendar.current.date(byAdding: dateComponents, to: now) // Add the DateComponents
+
+        return yesterday!
+    }
 
 }
