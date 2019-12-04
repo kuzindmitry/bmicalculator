@@ -44,7 +44,7 @@ class CalculatorViewController: UIViewController {
         ageTextField.delegate = self
         goalTextField.delegate = self
         
-    
+        
         heightTextField.setCircleRadius()
         weightTextField.setCircleRadius()
         weightMinusButton.setCircleRadius()
@@ -55,7 +55,7 @@ class CalculatorViewController: UIViewController {
         saveButton.setCircleRadius()
         
         updateGenderButtons()
-         
+        
         
         heightSegmentedControl.setTitleTextAttributes(segmentedControlsTextAttributes, for: .selected)
         weightSegmentedControl.setTitleTextAttributes(segmentedControlsTextAttributes, for: .selected)
@@ -64,7 +64,7 @@ class CalculatorViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-       
+        
         
         // Background image settings (coded in BackgroundImage.swift file)
         self.view.addBackground()
@@ -77,11 +77,11 @@ class CalculatorViewController: UIViewController {
     }
     
     
-
+    
     
     // MARK: - Actions
     
-    ///Gender Buttons functionality
+    ///Gender Buttons functionality settings
     @IBAction func genderButtonTouched(_ sender: UIButton) {
         gender = GenderType(rawValue: sender.tag) ?? gender
         updateGenderButtons()
@@ -94,7 +94,7 @@ class CalculatorViewController: UIViewController {
         femaleButtonContainer.backgroundColor = gender == .female ? selectedColor : unselectedColor
     }
     
-    ///Text Fields Editing
+    ///Text Fields Events Setting
     @IBAction func heightTextFieldEditingDidBegin(_ sender: UITextField) {
         
         if heightSegmentedControl.selectedSegmentIndex == 0 {
@@ -102,6 +102,7 @@ class CalculatorViewController: UIViewController {
         } else {
             heightTextField.text = "5.25"
         }
+        ageTextField.clearsOnBeginEditing = false
     }
     
     @IBAction func weightTextFieldEditingDidBegin(_ sender: UITextField) {
@@ -127,7 +128,38 @@ class CalculatorViewController: UIViewController {
         ageTextField.text = "32"
     }
     
-
+    @IBAction func heightTextFieldEditingChanged(_ sender: UITextField) {
+        
+        if heightSegmentedControl.selectedSegmentIndex == 0 {
+            checkMaxLength(textField: heightTextField, maxLength: 3)
+        } else {
+            checkMaxLength(textField: heightTextField, maxLength: 4)
+        }
+    }
+    
+    @IBAction func weightTextFieldEditingChanged(_ sender: UITextField) {
+        
+        if weightSegmentedControl.selectedSegmentIndex == 0 {
+            checkMaxLength(textField: weightTextField, maxLength: 4)
+        } else {
+            checkMaxLength(textField: weightTextField, maxLength: 5)
+        }
+    }
+    
+    @IBAction func goalTextFieldEditingChanged(_ sender: UITextField) {
+        
+        if weightSegmentedControl.selectedSegmentIndex == 0 {
+            checkMaxLength(textField: goalTextField, maxLength: 4)
+        } else {
+            checkMaxLength(textField: goalTextField, maxLength: 5)
+        }
+    }
+    
+    @IBAction func ageTextFieldEditingChanged(_ sender: UITextField) {
+        
+        checkMaxLength(textField: ageTextField, maxLength: 2)
+    }
+    
     
     ///User's Data Saving
     @IBAction func saveUserData(_ sender: UIButton) {
@@ -136,12 +168,14 @@ class CalculatorViewController: UIViewController {
         let height = Double(heightTextField.text ?? "") ?? 0
         let weight = Double(weightTextField.text ?? "") ?? 0
         let goal = Double(goalTextField.text ?? "") ?? 0
-        let age = Int(ageTextField.text ?? "") ?? 0
+        let age = Int(ageTextField.text!) ?? 0
         
         let weightIndex = weightSegmentedControl.selectedSegmentIndex
         let weightMetrics: WeightMetricsType = weightIndex == 1 ? .lb : .kg
         let heightIndex = heightSegmentedControl.selectedSegmentIndex
         let heightMetrics: HeightMetricsType = heightIndex == 1 ? .ft : .cm
+        
+        let dateOfAdd = Date()
         
         Database.current.add(entity: user) {
             
@@ -152,15 +186,14 @@ class CalculatorViewController: UIViewController {
             user.age = age
             user.weightMetrics = weightMetrics
             user.heightMetrics = heightMetrics
+            user.dateOfAdd = dateOfAdd
             
             DispatchQueue.main.async {
                 Storage.default.isOnboardingPresented = true
                 let controller = Storyboard(.main).initialController!
                 self.present(controller, animated: true, completion: nil)
             }
-            
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -174,7 +207,6 @@ class CalculatorViewController: UIViewController {
 // MARK: - Extensions
 
 extension CalculatorViewController : UITextFieldDelegate {
-
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -182,31 +214,15 @@ extension CalculatorViewController : UITextFieldDelegate {
         let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharactersSet = CharacterSet (charactersIn: string)
         
-        if weightTextField.text!.count > 4 {
-            weightTextField.text?.removeLast(5)
-        }
-        
-        if goalTextField.text!.count > 4 {
-            goalTextField.text?.removeLast(5)
-        }
-        
-        if heightSegmentedControl.selectedSegmentIndex == 0 {
-            if heightTextField.text!.count > 2 {
-                heightTextField.text?.removeLast(3)
-            }
-        } else {
-            if heightTextField.text!.count > 3 {
-                heightTextField.text?.removeLast(4)
-            }
-        }
-        
-        if ageTextField.text!.count > 1 {
-            ageTextField.text?.removeLast(2)
-        }
-        
         return allowedCharactersSet.isSuperset(of: typedCharactersSet)
-        
     }
+    
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if textField.text!.count > maxLength {
+            textField.deleteBackward()
+        }
+    }
+    
     
     @objc func keyboardWillChange (notification: Notification) {
         
@@ -216,6 +232,7 @@ extension CalculatorViewController : UITextFieldDelegate {
             if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification { view.frame.origin.y = -keyboardRect.height }
         }
     }
+    
 }
 
 

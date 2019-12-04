@@ -106,6 +106,7 @@ class AddTodaysWeightViewController : UIViewController {
     
     
     @IBAction func addTodaysWeightButtonIsTouchedDown(_ sender: UIButton) {
+        
         let currentValue: Double = Double(todaysWeightTextField.text ?? "") ?? 0
         let metric: WeightMetric = WeightMetric()
         let metrics: [WeightMetric] = Database.current.get()
@@ -183,27 +184,32 @@ class AddTodaysWeightViewController : UIViewController {
 
     @IBAction func addSpecificDateWeightTouchedDown(_ sender: UIButton) {
         
-        let user = User()
         
-        Database.current.add(entity: user) {
-            user.weight = Double(self.specificDateWeightTextField.text!)!
+        let specificDateValue: Double = Double(specificDateWeightTextField.text ?? "") ?? 0
+        let metric: WeightMetric = WeightMetric()
+        let metrics: [WeightMetric] = Database.current.get()
+        
+        
+        if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
+            metric.change = specificDateValue - lastMetric.value
+        } else if let user: User = User.current {
+            metric.change = specificDateValue - user.weight
+        } else {
+            metric.change = 0
         }
         
-        func addSpecificWeight() -> [PointEntry] {
-            var result: [PointEntry] = []
-            
-            let value = User.current!.weight
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMM"
-            let date = datePicker.date
-            
-            result.append(PointEntry(value: Int(value), label: formatter.string(from: date)))
-            
-            return result
+        metric.created = Date().timestamp
+        metric.id = UUID().uuidString
+        metric.value = specificDateValue
+        
+        Database.current.add(entity: metric) {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }
+
 
 
 //MARK: Extensions
