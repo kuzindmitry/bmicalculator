@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController {
     
+    let user = User.current
     
     //MARK: Outlets
     
@@ -23,8 +25,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var currentWeightView: UIView!
     @IBOutlet weak var currentWeightLabel: UILabel!
     @IBOutlet weak var remainLabel: UILabel!
-
-
+    
+    
     
     @IBOutlet weak var addTodaysWeightFromNextvcButton: UIButton!
     
@@ -39,8 +41,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     var metrics: [WeightMetric] = []
+    var userMetrics: [User] = []
     
-
+//    var userEntityItems: [UserEntity] = []
+    
+    
     
     //MARK: viewDidLoad
     override func viewDidLoad() {
@@ -60,50 +65,37 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         chartView.dataEntries = receiveUserDetails()
         chartView.backgroundColor = .clear
         
+        
+        
         ///Weight Goal block
-        let user = User.current
-        goalLabel.text = "\(user?.weightGoal ?? 0)"
+        getWeightGoal()
+        
+        
+//        let weightGoalFetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+//        let goalPredicate = NSPredicate(format: "weightGoal = %@")
+//        weightGoalFetchRequest.predicate = goalPredicate
+//        let userMetrics: [User] = Database.current.get(with: goalPredicate)
+//
+//        let goal = userMetrics.first?.weightGoal
+        //            let goal = metric.weightGoal
+        
+        
+        
         weightMetricLabel.text = user?.weightMetrics.rawValue ?? ""
         
         ///Current Weight block
+        
         currentWeightLabel.text = "\(user?.weight ?? 0)"
         let weightDifference: Double = ((user?.weightGoal ?? 0) - (user?.weight ?? 0))
         remainLabel.text = "\(weightDifference) \(user?.weightMetrics.rawValue ?? "") remain"
         if weightDifference > 0 {
             remainLabel.text = "Your Weight Goal is completed! Congratulations!"
         }
-        
     }
+    
+
     
     //MARK: Functions
-    
-    //Table View Update
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let user = User.current
-        let df = DateFormatter()
-        let date = Date()
-    
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        
-        df.dateFormat = "EEEE"
-        cell.weekdayLabel.text = df.string(from: date.dayBefore(numberOfDaysBefore: indexPath.row))
-        
-        df.dateFormat = "MMMM, dd"
-        cell.dayLabel.text = df.string(from: date.dayBefore(numberOfDaysBefore: indexPath.row))
-        
-//        cell.observedWeightLabel.te
-        
-//        cell.observedWeightLabel.text = "\(user?.weight ?? 0)"
-        
-        cell.selectedWeightMetric.text = user?.weightMetrics.rawValue ?? ""
-        
-        return cell
-    }
     
     func receiveUserDetails() -> [PointEntry] {
         var result: [PointEntry] = []
@@ -117,6 +109,54 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         return result
+    }
+    //FIXME: Get Weight Goal
+        func getWeightGoal()  {
+
+
+            let metric: WeightMetric = WeightMetric()
+            let metrics: [WeightMetric] = Database.current.get()
+            let userMetric: User = User()
+            let userMetrics: [User] = Database.current.get(with: NSPredicate(format: "weightGoal = %@"))
+            
+//            metric.id = UUID().uuidString
+//            metric.created = Date().timestamp
+
+            
+            //CHANGE
+            
+//            if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
+//                metric.change = lastMetric.value
+//            } else if let user: User = User.current {
+//                metric.change = user.weightGoal
+//            } else {
+//                metric.change = 0
+//            }
+            
+            if let lastMetric: WeightMetric = metrics.last {
+                metric.value = lastMetric.value
+            } else if let user: User = User.current {
+                metric.value =  user.weightGoal
+                
+            //VALUE
+
+//            if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
+//                metric.value = lastMetric.value
+////            } else if let user: User = User.current {
+////                metric.value = user.weightGoal
+//            } else {
+//                metric.value = 77
+//            }
+            
+                print("\(metric.value) is fetched as Goal value")
+                goalLabel.text = "\(metric.value)"
+                
+//свойства user
+//            let currentValue = user?.weightGoal //ВСЕГДА ДОСТАЁТ 0
+//            let valueOfGoal = User().weightGoal //ВСЕГДА ДОСТАЁТ 0
+//            let ourNum = userMetrics.first?.weightGoal ?? 1 //ВСЕГДА ДОСТАЁТ 0
+
+            }
     }
     
     func generateRandomData() -> [PointEntry] {
@@ -140,6 +180,36 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //MARK: Extensions
 
 
+extension MainViewController : UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let user = User.current
+        let df = DateFormatter()
+        let date = Date()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        
+        df.dateFormat = "EEEE"
+        cell.weekdayLabel.text = df.string(from: date.dayBefore(numberOfDaysBefore: indexPath.row))
+        
+        df.dateFormat = "MMMM, dd"
+        cell.dayLabel.text = df.string(from: date.dayBefore(numberOfDaysBefore: indexPath.row))
+        
+        //        cell.observedWeightLabel.te
+        
+        //        cell.observedWeightLabel.text = "\(user?.weight ?? 0)"
+        
+        cell.selectedWeightMetric.text = user?.weightMetrics.rawValue ?? ""
+        
+        return cell
+    }
+    
+}
 
 extension Date {
     
@@ -162,15 +232,23 @@ extension Date {
     func dayBefore(numberOfDaysBefore: Int) -> Date {
         
         var dateComponents = DateComponents()
-        
         if numberOfDaysBefore >= 1 {
             dateComponents.setValue(-numberOfDaysBefore, for: .day) // -1 day
         }
-
         let now = Date() // Current date
         let dayBefore = Calendar.current.date(byAdding: dateComponents, to: now) // Add the DateComponents
-
+        
         return dayBefore!
     }
+    
+    
+}
 
+extension MainViewController {
+    
+    func toString() -> String {
+        return String(format: "%.1f",self)
+    }
+    
+    
 }

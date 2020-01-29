@@ -38,7 +38,6 @@ class User: DataEntity {
     var weightMetrics: WeightMetricsType = .kg
     var heightMetrics: HeightMetricsType = .cm
     var entity: UserEntity?
-    var dateOfAdd: Date = Date()
     
     /// Current saved user
     static var current: User? {
@@ -60,7 +59,6 @@ class User: DataEntity {
         weightGoal = entity.weightGoal
         heightMetrics = HeightMetricsType(rawValue: entity.heightMetrics ?? "") ?? .cm
         weightMetrics = WeightMetricsType(rawValue: entity.weightMetrics ?? "") ?? .kg
-        dateOfAdd = Date()
     }
     
     init() {}
@@ -77,7 +75,6 @@ class User: DataEntity {
         entity.weightGoal = weightGoal
         entity.weightMetrics = weightMetrics.rawValue
         entity.heightMetrics = heightMetrics.rawValue
-        entity.dateOfAdd = dateOfAdd
     }
     
 }
