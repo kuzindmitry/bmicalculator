@@ -6,42 +6,16 @@
 //  Copyright © 2019 Super Developers. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 /// Weight metric entity
 /// - Author: Dmitry Kuzin
-class WeightMetric: DataEntity {
-    typealias Object = WeightMetricEntity
+class WeightMetric: Entity {
     
     //MARK: - Variables
     
-    internal var id: String = UUID().uuidString
-    
-    var created: Int64 = 0
-    var value: Double = 0
-    var change: Double = 0
-    var entity: WeightMetricEntity?
-    
-    
-    // MARK: - Initialization
-    
-    required init(with entity: WeightMetricEntity) {
-        id = entity.id ?? ""
-        created = entity.created
-        value = entity.value
-        change = entity.change
-    }
-    
-    init() {}
-    
-    
-    // MARK: - Update entity
-    
-    func update(_ entity: WeightMetricEntity) {
-        entity.id = id
-        entity.created = created
-        entity.value = value
-        entity.change = change
-    }
+    @objc dynamic var created: Date = Date()
+    @objc dynamic var value: Double = 0
+    @objc dynamic var change: Double = 0
     
 }

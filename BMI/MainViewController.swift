@@ -10,9 +10,7 @@ import UIKit
 import CoreData
 
 class MainViewController: UIViewController {
-    
-    let user = User.current
-    
+
     //MARK: Outlets
     
     @IBOutlet weak var chartView: ChartView!
@@ -32,7 +30,13 @@ class MainViewController: UIViewController {
     
     @IBAction func addTodaysWeightButtonTouchedDown(_ sender: UIButton) {
         performSegue(withIdentifier: "toTodaysWeight", sender: nil)
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTodaysWeight" {
+            let vc = segue.destination as! AddTodaysWeightViewController
+            vc.delegate = self
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -40,9 +44,8 @@ class MainViewController: UIViewController {
         
     }
     
-    var metrics: [WeightMetric] = []
-    var userMetrics: [User] = []
-    
+    var user = User.current
+    var weekMetrics: [WeightMetric] = []
 //    var userEntityItems: [UserEntity] = []
     
     
@@ -53,44 +56,35 @@ class MainViewController: UIViewController {
         
         addTodaysWeightFromNextvcButton.layer.cornerRadius = addTodaysWeightFromNextvcButton.frame.size.height / 5
         
-        ///Chart View preparation
-        let today: Date = Date()
-        let weekStartDate = today.startOfWeek.timestamp
-        let weekEndDate = today.endOfWeek.timestamp
-        
-        let predicate = NSPredicate(format: "created >= %ld AND created < %ld ", weekStartDate, weekEndDate)
-        metrics = Database.current.get(with: predicate)
         
         chartView.isCurved = true
-        chartView.dataEntries = receiveUserDetails()
         chartView.backgroundColor = .clear
         
         
+        updateContent()
+    }
+    
+    func updateContent() {
         
-        ///Weight Goal block
+        weightMetricLabel.text = user?.weightMetricType.rawValue ?? ""
+        
         getWeightGoal()
         
+        ///Chart View preparation
+        let today: Date = Date()
+        let weekStartDate = today.startOfWeek
+        let weekEndDate = today.endOfWeek
         
-//        let weightGoalFetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
-//        let goalPredicate = NSPredicate(format: "weightGoal = %@")
-//        weightGoalFetchRequest.predicate = goalPredicate
-//        let userMetrics: [User] = Database.current.get(with: goalPredicate)
-//
-//        let goal = userMetrics.first?.weightGoal
-        //            let goal = metric.weightGoal
+        weekMetrics = user?.metrics.filter { $0.created >= weekStartDate && $0.created < weekEndDate } ?? []
         
-        
-        
-        weightMetricLabel.text = user?.weightMetrics.rawValue ?? ""
-        
-        ///Current Weight block
-        
+        chartView.dataEntries = receiveUserDetails()
         currentWeightLabel.text = "\(user?.weight ?? 0)"
-        let weightDifference: Double = ((user?.weightGoal ?? 0) - (user?.weight ?? 0))
-        remainLabel.text = "\(weightDifference) \(user?.weightMetrics.rawValue ?? "") remain"
+        let weightDifference: Double = (user?.weightGoal ?? 0) - (user?.weight ?? 0)
+        remainLabel.text = "\(weightDifference) \(user?.weightMetricType.rawValue ?? "") remain"
         if weightDifference > 0 {
             remainLabel.text = "Your Weight Goal is completed! Congratulations!"
         }
+        
     }
     
 
@@ -102,61 +96,17 @@ class MainViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM"
-        for metric in metrics {
-            let date = Date(timeIntervalSince1970: TimeInterval(metric.created))
-            let point = PointEntry(value: Int(metric.value), label: dateFormatter.string(from: date))
+        for metric in weekMetrics {
+            let point = PointEntry(value: Int(metric.value), label: dateFormatter.string(from: metric.created))
             result.append(point)
         }
         
         return result
     }
     //FIXME: Get Weight Goal
-        func getWeightGoal()  {
-
-
-            let metric: WeightMetric = WeightMetric()
-            let metrics: [WeightMetric] = Database.current.get()
-            let userMetric: User = User()
-            let userMetrics: [User] = Database.current.get(with: NSPredicate(format: "weightGoal = %@"))
-            
-//            metric.id = UUID().uuidString
-//            metric.created = Date().timestamp
-
-            
-            //CHANGE
-            
-//            if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
-//                metric.change = lastMetric.value
-//            } else if let user: User = User.current {
-//                metric.change = user.weightGoal
-//            } else {
-//                metric.change = 0
-//            }
-            
-            if let lastMetric: WeightMetric = metrics.last {
-                metric.value = lastMetric.value
-            } else if let user: User = User.current {
-                metric.value =  user.weightGoal
-                
-            //VALUE
-
-//            if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
-//                metric.value = lastMetric.value
-////            } else if let user: User = User.current {
-////                metric.value = user.weightGoal
-//            } else {
-//                metric.value = 77
-//            }
-            
-                print("\(metric.value) is fetched as Goal value")
-                goalLabel.text = "\(metric.value)"
-                
-//свойства user
-//            let currentValue = user?.weightGoal //ВСЕГДА ДОСТАЁТ 0
-//            let valueOfGoal = User().weightGoal //ВСЕГДА ДОСТАЁТ 0
-//            let ourNum = userMetrics.first?.weightGoal ?? 1 //ВСЕГДА ДОСТАЁТ 0
-
-            }
+    func getWeightGoal()  {
+        guard let user = User.current else { return }
+        goalLabel.text = "\(user.weightGoal)"
     }
     
     func generateRandomData() -> [PointEntry] {
@@ -204,9 +154,18 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate {
         
         //        cell.observedWeightLabel.text = "\(user?.weight ?? 0)"
         
-        cell.selectedWeightMetric.text = user?.weightMetrics.rawValue ?? ""
+        cell.selectedWeightMetric.text = user?.weightMetricType.rawValue
         
         return cell
+    }
+    
+}
+
+extension MainViewController: AddTodaysWeightViewControllerDelegate {
+    
+    func addTodaysWeightViewController(_ controller: AddTodaysWeightViewController, didAddMetricForUser user: User) {
+        self.user = user
+        updateContent()
     }
     
 }

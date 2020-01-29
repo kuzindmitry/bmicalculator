@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol AddTodaysWeightViewControllerDelegate: class {
+    func addTodaysWeightViewController(_ controller: AddTodaysWeightViewController, didAddMetricForUser user: User)
+}
+
 class AddTodaysWeightViewController : UIViewController {
     
+    weak var delegate: AddTodaysWeightViewControllerDelegate?
     
     var weightTimer = Timer()
     var defaultWeight: String = "50.0"
@@ -108,24 +113,7 @@ class AddTodaysWeightViewController : UIViewController {
     @IBAction func addTodaysWeightButtonIsTouchedDown(_ sender: UIButton) {
         
         let currentValue: Double = Double(todaysWeightTextField.text ?? "") ?? 0
-        let metric: WeightMetric = WeightMetric()
-        let metrics: [WeightMetric] = Database.current.get()
-        if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
-            metric.change = currentValue - lastMetric.value
-        } else if let user: User = User.current {
-            metric.change = currentValue - user.weight
-        } else {
-            metric.change = 0
-        }
-        metric.created = Date().timestamp
-        metric.id = UUID().uuidString
-        metric.value = currentValue
-        
-        Database.current.add(entity: metric) {
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
+        addMetric(with: currentValue, for: Date())
     }
     
     
@@ -183,30 +171,38 @@ class AddTodaysWeightViewController : UIViewController {
     
 
     @IBAction func addSpecificDateWeightTouchedDown(_ sender: UIButton) {
-        
-        
         let specificDateValue: Double = Double(specificDateWeightTextField.text ?? "") ?? 0
+        addMetric(with: specificDateValue, for: datePicker.date)
+    }
+    
+    func addMetric(with value: Double, for date: Date) {
+        guard let user = User.current else { return }
         let metric: WeightMetric = WeightMetric()
-        let metrics: [WeightMetric] = Database.current.get()
-        
+        let metrics = user.metrics
+        let copiedUser = User(value: user)
         
         if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created > $1.created }).first {
-            metric.change = specificDateValue - lastMetric.value
+            metric.change = value - lastMetric.value
         } else if let user: User = User.current {
-            metric.change = specificDateValue - user.weight
-        } else {
-            metric.change = 0
+            metric.change = value - user.weight
         }
+        metric.value = value
+        metric.created = date
         
-        metric.created = Date().timestamp
-        metric.id = UUID().uuidString
-        metric.value = specificDateValue
-        
-        Database.current.add(entity: metric) {
+        copiedUser.metrics.append(metric)
+        if let lastMetric = copiedUser.metrics.sorted(by: { $0.created > $1.created }).first {
+            copiedUser.weight = lastMetric.value
+        }
+        Database.current.add(copiedUser, success: { [weak self] in
             DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
+                if let `self` = self {
+                    self.delegate?.addTodaysWeightViewController(self, didAddMetricForUser: copiedUser)
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
-        }
+        }, failure: { error in
+            print(error?.localizedDescription ?? "none")
+        })
     }
 }
 

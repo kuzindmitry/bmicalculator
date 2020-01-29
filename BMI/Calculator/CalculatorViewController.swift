@@ -175,26 +175,25 @@ class CalculatorViewController: UIViewController {
         let heightIndex = heightSegmentedControl.selectedSegmentIndex
         let heightMetrics: HeightMetricsType = heightIndex == 1 ? .ft : .cm
         
+        user.genderValue = gender.rawValue
+        user.height = height
+        user.weight = weight
+        user.weightGoal = goal
+        user.age = age
+        user.weightMetricTypeValue = weightMetrics.rawValue
+        user.heightMetricTypeValue = heightMetrics.rawValue
+        user.id = "1"
         
-        Database.current.add(entity: user) {
-            
-            user.gender = self.gender
-            user.height = height
-            user.weight = weight
-            user.weightGoal = goal
-            user.age = age
-            user.weightMetrics = weightMetrics
-            user.heightMetrics = heightMetrics
-            
-            
-            
+        Database.current.add(user, success: {
             DispatchQueue.main.async {
                 Storage.default.isOnboardingPresented = true
                 let controller = Storyboard(.main).initialController!
                 self.present(controller, animated: true, completion: nil)
             }
-            print("User data saved successfully and contains gender: \(user.gender), age: \(user.age), height: \(user.height) \(user.heightMetrics), weight: \(user.weight) \(user.weightMetrics) with goal \(user.weightGoal) \(user.weightMetrics)")
-        }
+            print("User data saved successfully and contains gender: \(user.gender), age: \(user.age), height: \(user.height) \(user.heightMetricType), weight: \(user.weight) \(user.weightMetricType) with goal \(user.weightGoal)")
+        }, failure: { error in
+            print(error?.localizedDescription ?? "none")
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

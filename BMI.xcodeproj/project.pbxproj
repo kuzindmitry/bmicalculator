@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,7 @@
 		380CFCF52310006E002EA2CC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFCF42310006E002EA2CC /* Database.swift */; };
 		380CFCF92310008B002EA2CC /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 380CFCF72310008B002EA2CC /* database.xcdatamodeld */; };
 		380CFCFB23100165002EA2CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFCFA23100165002EA2CC /* User.swift */; };
-		380CFCFD2310016D002EA2CC /* DataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFCFC2310016D002EA2CC /* DataEntity.swift */; };
+		380CFCFD2310016D002EA2CC /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFCFC2310016D002EA2CC /* Entity.swift */; };
 		380CFD0123101D71002EA2CC /* WeightMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD0023101D71002EA2CC /* WeightMetric.swift */; };
 		380CFD0323106529002EA2CC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380CFD0223106529002EA2CC /* Onboarding.storyboard */; };
 		380CFD0523106535002EA2CC /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CFD0423106535002EA2CC /* Storyboard.swift */; };
@@ -32,6 +32,7 @@
 		38F88D3F23152887001DC19E /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F88D3E23152887001DC19E /* ChartView.swift */; };
 		38F88D4123152A35001DC19E /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F88D4023152A35001DC19E /* DotCALayer.swift */; };
 		38F88D4323152A59001DC19E /* CurveAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F88D4223152A58001DC19E /* CurveAlgorithm.swift */; };
+		947C14F2554C2B249ECA8C83 /* Pods_BMI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4346CAC82F7E210454A2F6AF /* Pods_BMI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +52,7 @@
 		380CFCF42310006E002EA2CC /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		380CFCF82310008B002EA2CC /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		380CFCFA23100165002EA2CC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		380CFCFC2310016D002EA2CC /* DataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntity.swift; sourceTree = "<group>"; };
+		380CFCFC2310016D002EA2CC /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		380CFD0023101D71002EA2CC /* WeightMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMetric.swift; sourceTree = "<group>"; };
 		380CFD0223106529002EA2CC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		380CFD0423106535002EA2CC /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -62,6 +63,9 @@
 		38F88D3E23152887001DC19E /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		38F88D4023152A35001DC19E /* DotCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
 		38F88D4223152A58001DC19E /* CurveAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurveAlgorithm.swift; sourceTree = "<group>"; };
+		3DA6303A1917742BBF47434F /* Pods-BMI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMI.debug.xcconfig"; path = "Target Support Files/Pods-BMI/Pods-BMI.debug.xcconfig"; sourceTree = "<group>"; };
+		4346CAC82F7E210454A2F6AF /* Pods_BMI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BMI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AA1D452588923D67A66B271 /* Pods-BMI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMI.release.xcconfig"; path = "Target Support Files/Pods-BMI/Pods-BMI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,12 +73,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947C14F2554C2B249ECA8C83 /* Pods_BMI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E6239EBCA6ED7CFEC056997 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4346CAC82F7E210454A2F6AF /* Pods_BMI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		365896DF23206D2D00BB65EC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +105,8 @@
 				380CFA30230FD863002EA2CC /* README.md */,
 				380CFA1D230FD7B3002EA2CC /* BMI */,
 				380CFA1C230FD7B3002EA2CC /* Products */,
+				864166776C7E7DE8ECC0C4CE /* Pods */,
+				1E6239EBCA6ED7CFEC056997 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,7 +162,7 @@
 		380CFCFF23101CDA002EA2CC /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				380CFCFC2310016D002EA2CC /* DataEntity.swift */,
+				380CFCFC2310016D002EA2CC /* Entity.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -172,6 +187,15 @@
 			path = Charts;
 			sourceTree = "<group>";
 		};
+		864166776C7E7DE8ECC0C4CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DA6303A1917742BBF47434F /* Pods-BMI.debug.xcconfig */,
+				6AA1D452588923D67A66B271 /* Pods-BMI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 380CFA2D230FD7B4002EA2CC /* Build configuration list for PBXNativeTarget "BMI" */;
 			buildPhases = (
+				D89F20EB692AEDCF6BDF65B3 /* [CP] Check Pods Manifest.lock */,
 				380CFA17230FD7B3002EA2CC /* Sources */,
 				380CFA18230FD7B3002EA2CC /* Frameworks */,
 				380CFA19230FD7B3002EA2CC /* Resources */,
+				4CC75B77BD3BEC97C0BF9912 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,6 +267,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4CC75B77BD3BEC97C0BF9912 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BMI/Pods-BMI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BMI/Pods-BMI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BMI/Pods-BMI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D89F20EB692AEDCF6BDF65B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BMI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		380CFA17230FD7B3002EA2CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -254,7 +322,7 @@
 				36D62AF323857B76009C3022 /* CustomTableViewCell.swift in Sources */,
 				365896D42317351400BB65EC /* BackgroundImage.swift in Sources */,
 				380CFCF52310006E002EA2CC /* Database.swift in Sources */,
-				380CFCFD2310016D002EA2CC /* DataEntity.swift in Sources */,
+				380CFCFD2310016D002EA2CC /* Entity.swift in Sources */,
 				365896DE231DA88E00BB65EC /* WeightField.swift in Sources */,
 				380CFD0523106535002EA2CC /* Storyboard.swift in Sources */,
 				380CFD09231065EC002EA2CC /* OnboardingContentViewController.swift in Sources */,
@@ -400,6 +468,7 @@
 		};
 		380CFA2E230FD7B4002EA2CC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DA6303A1917742BBF47434F /* Pods-BMI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -419,6 +488,7 @@
 		};
 		380CFA2F230FD7B4002EA2CC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AA1D452588923D67A66B271 /* Pods-BMI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

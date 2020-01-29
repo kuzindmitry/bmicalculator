@@ -6,139 +6,103 @@
 //  Copyright © 2019 Super Developers. All rights reserved.
 //
 
-import CoreData
+import RealmSwift
 
 final class Database {
     
     static let `current`: Database = Database()
-    public var container: NSPersistentContainer
+
+    typealias Success = (() -> Void)
+    typealias Failure = ((_ error: Error?) -> Void)
     
-    
-    //MARK: - Initialization
+    private let defaultRealm: Realm
+    func realmInstance() throws -> Realm {
+        return Thread.isMainThread ? defaultRealm : try Realm()
+    }
     
     private init() {
-        container = NSPersistentContainer(name: "database")
-        container.loadPersistentStores { (_, error) in
-            guard let error = error else { return }
-            fatalError("Unresolved error \(error)")
-        }
-    }
-    
-    
-    //MARK: - Get from Core Data
-    
-    /// Get entity with id
-    ///
-    /// - Author: Dmitry Kuzin
-    /// - Parameters:
-    ///   - id: unique identifier of Entity
-    /// - Returns: Entity
-    func get<T>(at id: String) -> T? where T : DataEntity {
-        let predicate = NSPredicate(format: "id=%@", id)
-        return get(with: predicate).first
-    }
-    
-    
-    /// Get entities with predicate
-    ///
-    /// - Author: Dmitry Kuzin
-    /// - Parameters:
-    ///   - predicate: Predicate for fetch request
-    /// - Returns: entities
-    func get<T>(with predicate: NSPredicate? = nil) -> [T] where T : DataEntity {
-        let context = container.viewContext
-        let fetchRequest = T.Object.fetchRequest()
-        fetchRequest.predicate = predicate
         do {
-            let results = try context.fetch(fetchRequest)
-            var entities: [T] = []
-            results.forEach {
-                entities.append(T.init(with: $0 as! T.Object))
-            }
-            return entities
+            defaultRealm = try Realm()
         } catch {
             print(error)
-            return []
+            fatalError()
         }
     }
     
-    /// Async get entities with predicate
-    ///
-    /// - Author: Dmitry Kuzin
-    /// - Parameters:
-    ///   - id: unique identifier of Entity
-    ///   - completion: Completion handler with entity
-    func asyncGet<T>(at id: String, _ completion: @escaping (T?) -> Void) where T : DataEntity {
-        let predicate = NSPredicate(format: "id=%@", id)
-        asyncGet(with: predicate) { (results) in
-            completion(results.first)
+    func add(objects: [Object], success: Success? = nil, failure: Failure? = nil) {
+        do {
+            let realm = try realmInstance()
+            try realm.safeWrite {
+                realm.add(objects, update: .all)
+            }
+            success?()
+        } catch {
+            print(error)
+            failure?(error)
         }
     }
     
-    /// Async get entities with predicate
-    ///
-    /// - Author: Dmitry Kuzin
-    /// - Parameters:
-    ///   - predicate: Predicate for fetch request
-    ///   - completion: Completion handler with result entities
-    func asyncGet<T>(with predicate: NSPredicate? = nil, _ completion: @escaping ([T]) -> Void) where T : DataEntity {
-        DispatchQueue.global().async {
-            self.container.performBackgroundTask({ (context) in
-                let fetchRequest = T.Object.fetchRequest()
-                fetchRequest.predicate = predicate
-                do {
-                    let results = try context.fetch(fetchRequest)
-                    var entities: [T] = []
-                    results.forEach {
-                        entities.append(T.init(with: $0 as! T.Object))
-                    }
-                    completion(entities)
-                } catch {
-                    print(error)
-                    completion([])
-                }
-            })
+    func add(_ object: Object, success: Success? = nil, failure: Failure? = nil) {
+        add(objects: [object], success: success, failure: failure)
+    }
+    
+    func delete(_ objects: [Object], success: Success? = nil, failure: Failure? = nil) {
+        do {
+            let realm = try realmInstance()
+            try realm.safeWrite {
+                realm.delete(objects)
+            }
+            success?()
+        } catch {
+            print(error)
+            failure?(error)
         }
     }
     
+    func delete(_ object: Object, success: Success? = nil, failure: Failure? = nil) {
+        delete([object], success: success, failure: failure)
+    }
     
-    //MARK: - Save to Core Data
-    
-    /// Save entities in Core Data
-    ///
-    /// - Author: Dmitry Kuzin
-    /// - Parameters:
-    ///   - entities: DataEntity objects
-    ///   - completion: Completion handler when entities saved
-    func add<T>(entities: [T], _ completion: (() -> Void)? = nil) where T : DataEntity {
-        DispatchQueue.global().async {
-            self.container.performBackgroundTask({ (context) in
-                for entity in entities {
-                    let object = T.Object(context: context)
-                    entity.update(object)
-                }
-                if context.hasChanges {
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Error save")
-                        print(error)
-                    }
-                    
-                }
-                completion?()
-            })
+    func deleteAll() {
+        let realm = try? realmInstance()
+        do {
+            try realm?.safeWrite {
+                realm?.deleteAll()
+                print("All deleted")
+            }
+        } catch {
+            print("Error all delete")
+            print(error)
         }
     }
     
-    /// Save entities in Core Data
-    ///
-    /// - Author: Dmitry Kuzin
-    /// - Parameters:
-    ///   - entities: DataEntity objects
-    ///   - completion: Completion handler when entities saved
-    func add<T>(entity: T, _ completion: (() -> Void)? = nil) where T : DataEntity {
-        add(entities: [entity], completion)
+    func objects<T: Object>(_ type: T.Type, predicate: NSPredicate? = nil, filter: ((T) -> Bool)? = nil) -> [T] {
+        if let results = (try? realmInstance())?.objects(type) {
+            if let predicate = predicate {
+                return Array(results.filter(predicate))
+            } else if let filter = filter {
+                return Array(results.filter(filter))
+            } else {
+                return Array(results)
+            }
+        }
+        return []
+    }
+    
+    func object<Element: Object, KeyType>(_ type: Element.Type, id: KeyType) -> Element? {
+        return (try? realmInstance())?.object(ofType: type, forPrimaryKey: id)
+    }
+    
+}
+
+extension Realm {
+    
+    func safeWrite(_ block: () throws -> Void) throws {
+        if isInWriteTransaction {
+            try block()
+        } else {
+            try write(block)
+        }
     }
     
 }

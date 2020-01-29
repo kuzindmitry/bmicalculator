@@ -502,7 +502,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addTodaysWeightButtonIsTouchedDown:" destination="qox-lP-Le1" eventType="touchDown" id="510-Bw-c6g"/>
+                                    <action selector="addTodaysWeightButtonIsTouchedDown:" destination="qox-lP-Le1" eventType="touchUpInside" id="L3T-M0-xhu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use lower field to add Your Weight for Specific Date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1e-mF-9HM">
