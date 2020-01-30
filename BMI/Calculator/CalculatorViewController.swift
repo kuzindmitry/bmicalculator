@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CoreData
-
 
 class CalculatorViewController: UIViewController {
     
@@ -24,6 +22,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var weightMinusButton: UIButton!
     @IBOutlet weak var weightPlusButton: UIButton!
     
+    @IBOutlet weak var userDataInputStackView: UIStackView!
+    
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var heightSegmentedControl: UISegmentedControl!
@@ -35,6 +35,9 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        NSLayoutConstraint(item: userDataInputStackView as Any, attribute: .bottom, relatedBy: .equal, toItem: saveButton, attribute: .bottom, multiplier: 1, constant: 10).isActive = true
+//        NSLayoutConstraint(item: , attribute: userDataInputStackView, relatedBy: <#T##NSLayoutConstraint.Relation#>, toItem: <#T##Any?#>, attribute: <#T##NSLayoutConstraint.Attribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
         
         heightSegmentedControl.prepare()
         weightSegmentedControl.prepare()

@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import CoreData
 
 class MainViewController: UIViewController {
-
+    
     //MARK: Outlets
     
     @IBOutlet weak var chartView: ChartView!
@@ -46,7 +45,7 @@ class MainViewController: UIViewController {
     
     var user = User.current
     var weekMetrics: [WeightMetric] = []
-//    var userEntityItems: [UserEntity] = []
+    //    var userEntityItems: [UserEntity] = []
     
     
     
@@ -55,7 +54,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         addTodaysWeightFromNextvcButton.layer.cornerRadius = addTodaysWeightFromNextvcButton.frame.size.height / 5
-        
+
         
         chartView.isCurved = true
         chartView.backgroundColor = .clear
@@ -80,14 +79,14 @@ class MainViewController: UIViewController {
         chartView.dataEntries = receiveUserDetails()
         currentWeightLabel.text = "\(user?.weight ?? 0)"
         let weightDifference: Double = (user?.weightGoal ?? 0) - (user?.weight ?? 0)
-        remainLabel.text = "\(weightDifference) \(user?.weightMetricType.rawValue ?? "") remain"
+        remainLabel.text = String(format: "%.1f", weightDifference) + " " + "\(user?.weightMetricType.rawValue ?? "") remain"
         if weightDifference > 0 {
-            remainLabel.text = "Your Weight Goal is completed! Congratulations!"
+            remainLabel.text = "Your Goal is completed!"
         }
         
     }
     
-
+    
     
     //MARK: Functions
     
@@ -133,32 +132,66 @@ class MainViewController: UIViewController {
 extension MainViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        let metrics = user?.metrics
+        let tableViewAppearingMetrics = metrics?.sorted(by: { $0.created > $1.created }).count ?? 0
+        
+        if tableViewAppearingMetrics > 0 {
+            tableViewAppearingMetrics
+        }
+        
+        return tableViewAppearingMetrics
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let user = User.current
-        let df = DateFormatter()
-        let date = Date()
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
+        let user = User.current
+        
+        let metric: WeightMetric = WeightMetric()
+        let metrics = user?.metrics
+        
+        let startingMetric = metrics?.sorted(by: { $0.created > $1.created }).count ?? 0
+        print(startingMetric)
+        if startingMetric < indexPath.row {
+            metric.created = Date()
+            metric.value = user?.weight ?? 0
+            metric.change = 0
+        }
+        
+        if startingMetric > indexPath.row, let lastMetric: WeightMetric = metrics?.sorted(by: { $0.created > $1.created })[indexPath.row] {
+                metric.created = lastMetric.created
+                metric.change = lastMetric.change
+                metric.value = lastMetric.value
+                metric.id = lastMetric.id
+            } else if let user: User = User.current {
+                metric.value = user.weight
+                metric.change = 0
+                metric.created = Date()
+            }
+        
+        let df = DateFormatter()
         df.dateFormat = "EEEE"
-        cell.weekdayLabel.text = df.string(from: date.dayBefore(numberOfDaysBefore: indexPath.row))
-        
+        cell.weekdayLabel.text = df.string(from: metric.created)
         df.dateFormat = "MMMM, dd"
-        cell.dayLabel.text = df.string(from: date.dayBefore(numberOfDaysBefore: indexPath.row))
-        
-        //        cell.observedWeightLabel.te
-        
-        //        cell.observedWeightLabel.text = "\(user?.weight ?? 0)"
-        
+        cell.dayLabel.text = df.string(from: metric.created)
+        cell.observedWeightLabel.text = String(format: "%.1f", metric.value)
+        cell.weightDifferenceLabel.text = String(format: "%.1f", metric.change)
         cell.selectedWeightMetric.text = user?.weightMetricType.rawValue
         
+        switch metric.change {
+        case ...0 :
+            cell.weightArrowImage.image = #imageLiteral(resourceName: "weightDownArrow")
+        case 0... :
+            cell.weightArrowImage.image = #imageLiteral(resourceName: "weightUpArrow")
+        case 0:
+            cell.weightArrowImage.image = #imageLiteral(resourceName: "weightUpArrow")
+            cell.weightArrowImage.alpha = 0
+        default:
+            print("Unknown value")
+        }
         return cell
     }
-    
 }
 
 extension MainViewController: AddTodaysWeightViewControllerDelegate {

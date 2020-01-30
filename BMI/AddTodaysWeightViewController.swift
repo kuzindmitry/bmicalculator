@@ -34,7 +34,7 @@ class AddTodaysWeightViewController : UIViewController {
     @IBOutlet weak var specificWeightPlusButton: UIButton!
     @IBOutlet weak var addSpecificDateWeightButton: UIButton!
     
-    
+    @IBOutlet weak var tableView: UITableView!
     //MARK: viewDidLoad
     
     override func viewDidLoad() {
@@ -203,6 +203,7 @@ class AddTodaysWeightViewController : UIViewController {
         }, failure: { error in
             print(error?.localizedDescription ?? "none")
         })
+        
     }
 }
 
