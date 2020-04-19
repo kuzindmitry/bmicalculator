@@ -35,10 +35,30 @@ class AddTodaysWeightViewController : UIViewController {
     @IBOutlet weak var addSpecificDateWeightButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    //Outlets for correct appearance settings
+    @IBOutlet weak var whatsYourWeightLabel: UILabel!
+    
+    @IBOutlet weak var upperWeightView: UIView!
+    
+    @IBOutlet weak var useLowerLabel: UILabel!
+    
+    @IBOutlet weak var myWeightAtLabel: UILabel!
+    
+    @IBOutlet weak var wasLabel: UILabel!
+    
+    @IBOutlet weak var lowerWeightView: UIView!
+    
     //MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addBackground()
+        
+        
+        constraintsSizerDependingOnDevice()
+        
         
         todaysWeightTextField.setCircleRadius()
         todaysWeightMinusButton.setCircleRadius()
@@ -211,27 +231,13 @@ class AddTodaysWeightViewController : UIViewController {
 
 //MARK: Extensions
 
-extension UIButton {
-    
-    func setCircleRadius () {
-        setCornerRadius(frame.size.height/2)
-        masksToBounds()
-    }
-    
-    func setCornerRadius (_ radius: CGFloat) {
-        layer.cornerRadius = radius
-    }
-    
-    func masksToBounds() {
-        layer.masksToBounds = true
-    }
-}
+
 
 extension AddTodaysWeightViewController {
     
     @objc func timerDecreaseAction() {
         
-        let defaultWeightNumber: Double = Double(todaysWeightTextField.text!) ?? 0
+        let defaultWeightNumber: Double = Double(todaysWeightTextField.text!) ?? 50.0
         let decreaseWeight: Double = -0.1
         let decreasedWeightResult = defaultWeightNumber + decreaseWeight
         todaysWeightTextField.text = String(format: "%.1f", decreasedWeightResult)
@@ -240,7 +246,7 @@ extension AddTodaysWeightViewController {
     
     @objc func timerIncreaseAction() {
         
-        let defaultWeightNumber: Double = Double(todaysWeightTextField.text!) ?? 0
+        let defaultWeightNumber: Double = Double(todaysWeightTextField.text!) ?? 50.0
         let increaseWeight: Double = 0.1
         let increasedWeightResult = defaultWeightNumber + increaseWeight
         todaysWeightTextField.text = String(format: "%.1f", increasedWeightResult)
@@ -249,7 +255,7 @@ extension AddTodaysWeightViewController {
     
     @objc func specificDateTimerDecreaseAction() {
         
-        let defaultWeightNumber: Double = Double(specificDateWeightTextField.text!) ?? 0
+        let defaultWeightNumber: Double = Double(specificDateWeightTextField.text!) ?? 50.0
         let decreaseWeight: Double = -0.1
         let decreasedWeightResult = defaultWeightNumber + decreaseWeight
         specificDateWeightTextField.text = String(format: "%.1f", decreasedWeightResult)
@@ -258,7 +264,7 @@ extension AddTodaysWeightViewController {
     
     @objc func specificDateTimerIncreaseAction() {
         
-        let defaultWeightNumber: Double = Double(specificDateWeightTextField.text!) ?? 0
+        let defaultWeightNumber: Double = Double(specificDateWeightTextField.text!) ?? 50.0
         let increaseWeight: Double = 0.1
         let increasedWeightResult = defaultWeightNumber + increaseWeight
         specificDateWeightTextField.text = String(format: "%.1f", increasedWeightResult)
@@ -266,3 +272,4 @@ extension AddTodaysWeightViewController {
     }
     
 }
+

@@ -22,13 +22,31 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var weightMinusButton: UIButton!
     @IBOutlet weak var weightPlusButton: UIButton!
     
-    @IBOutlet weak var userDataInputStackView: UIStackView!
     
-    @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var heightSegmentedControl: UISegmentedControl!
     @IBOutlet weak var weightSegmentedControl: UISegmentedControl!
     
+    //Stack Views Outlets for correct layout settings
+    @IBOutlet weak var bmiCalculatorLabel: UILabel!
+    
+    @IBOutlet weak var genderStackView: UIStackView!
+    @IBOutlet weak var malePicture: UIImageView!
+    @IBOutlet weak var maleLabel: UILabel!
+    @IBOutlet weak var maleButton: UIButton!
+    @IBOutlet weak var femalePicture: UIImageView!
+    @IBOutlet weak var femaleLabel: UILabel!
+    @IBOutlet weak var femaleButton: UIButton!
+    
+
+    @IBOutlet weak var dataFieldSuperStackView: UIStackView!
+    @IBOutlet weak var measuresStackView: UIStackView!
+    @IBOutlet weak var textViewsStackView: UIStackView!
+    
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+
     let segmentedControlsTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 52.0/255.0, green: 68.0/255.0, blue: 79.0/255.0, alpha: 1.0)]
     
     var gender: GenderType = .male
@@ -36,8 +54,7 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        NSLayoutConstraint(item: userDataInputStackView as Any, attribute: .bottom, relatedBy: .equal, toItem: saveButton, attribute: .bottom, multiplier: 1, constant: 10).isActive = true
-//        NSLayoutConstraint(item: , attribute: userDataInputStackView, relatedBy: <#T##NSLayoutConstraint.Relation#>, toItem: <#T##Any?#>, attribute: <#T##NSLayoutConstraint.Attribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
+        constraintsSizerDependingOnDevice()
         
         heightSegmentedControl.prepare()
         weightSegmentedControl.prepare()
@@ -251,6 +268,22 @@ extension UITextField {
     
 }
 
+extension UIButton {
+    
+    func setCircleRadius () {
+        setCornerRadius(frame.size.height/2)
+        masksToBounds()
+    }
+    
+    func setCornerRadius (_ radius: CGFloat) {
+        layer.cornerRadius = radius
+    }
+    
+    func masksToBounds() {
+        layer.masksToBounds = true
+    }
+}
+
 extension UISegmentedControl {
     
     func prepare() {
@@ -260,9 +293,8 @@ extension UISegmentedControl {
         setTitleTextAttributes([NSAttributedString.Key.font: heightSegmentControlFont], for: UIControl.State.normal)
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: UIControl.State.normal)
-        
-        
-        
     }
 }
+
+
 
