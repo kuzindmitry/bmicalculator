@@ -204,6 +204,12 @@ class CalculatorViewController: UIViewController {
         user.heightMetricTypeValue = heightMetrics.rawValue
         user.id = "1"
         
+//        //lower 4 lines append default value to main list of metrics
+//        let defaultUserValue = WeightMetric()
+//        defaultUserValue.created = Date()
+//        defaultUserValue.value = user.weight
+//        user.metrics.append(defaultUserValue)
+        
         Database.current.add(user, success: {
             DispatchQueue.main.async {
                 Storage.default.isOnboardingPresented = true
