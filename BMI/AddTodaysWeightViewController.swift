@@ -133,7 +133,7 @@ class AddTodaysWeightViewController : UIViewController {
     @IBAction func addTodaysWeightButtonIsTouchedDown(_ sender: UIButton) {
         
         let currentValue: Double = Double(todaysWeightTextField.text ?? "") ?? 0
-        addMetric(with: currentValue, for: datePicker.date)
+        addMetric(with: currentValue, for: Date())
     }
     
     
@@ -195,24 +195,26 @@ class AddTodaysWeightViewController : UIViewController {
         addMetric(with: specificDateValue, for: datePicker.date)
     }
     
+
+}
+
+//MARK: Extensions
+
+extension AddTodaysWeightViewController {
+    
     func addMetric(with value: Double, for date: Date) {
         guard let user = User.current else { return }
         let metric: WeightMetric = WeightMetric()
-        let metrics = user.metrics
+//        let metrics = user.metrics
         let copiedUser = User(value: user)
         
-        if let lastMetric: WeightMetric = metrics.sorted(by: { $0.created < $1.created }).first {
-            metric.change = value - lastMetric.value
-        } else if let user: User = User.current {
-            metric.change = value - user.weight
-        }
         metric.value = value
         metric.created = date
-        
         copiedUser.metrics.append(metric)
-        if let lastMetric = copiedUser.metrics.sorted(by: { $0.created < $1.created }).first {
-            copiedUser.weight = lastMetric.value
-        }
+        
+//        if let lastMetric = copiedUser.metrics.sorted(by: { $0.created > $1.created }).first {
+//            copiedUser.weight = lastMetric.value
+//        }
         Database.current.add(copiedUser, success: { [weak self] in
             DispatchQueue.main.async {
                 if let `self` = self {
@@ -225,15 +227,6 @@ class AddTodaysWeightViewController : UIViewController {
         })
         
     }
-}
-
-
-
-//MARK: Extensions
-
-
-
-extension AddTodaysWeightViewController {
     
     @objc func timerDecreaseAction() {
         

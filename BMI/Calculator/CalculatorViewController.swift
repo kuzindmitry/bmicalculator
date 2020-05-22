@@ -204,12 +204,14 @@ class CalculatorViewController: UIViewController {
         user.heightMetricTypeValue = heightMetrics.rawValue
         user.id = "1"
         
-//        //lower 4 lines append default value to main list of metrics
-//        let defaultUserValue = WeightMetric()
-//        defaultUserValue.created = Date()
-//        defaultUserValue.value = user.weight
-//        user.metrics.append(defaultUserValue)
+        // lower 4 lines append default value to main list of metrics
+        let metric: WeightMetric = WeightMetric()
+        let metrics = user.metrics
+        metric.value = weight
+        metric.created = Date()
+        metrics.append(metric)
         
+
         Database.current.add(user, success: {
             DispatchQueue.main.async {
                 Storage.default.isOnboardingPresented = true
@@ -220,6 +222,9 @@ class CalculatorViewController: UIViewController {
         }, failure: { error in
             print(error?.localizedDescription ?? "none")
         })
+        
+
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -255,10 +260,13 @@ extension CalculatorViewController : UITextFieldDelegate {
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         if goalTextField.isEditing == true || ageTextField.isEditing == true {
-            if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification { view.frame.origin.y = -keyboardRect.height }
+            if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+                view.frame.origin.y = -keyboardRect.height
+                dataFieldSuperStackView.translatesAutoresizingMaskIntoConstraints = true
         }
     }
     
+}
 }
 
 
@@ -301,6 +309,3 @@ extension UISegmentedControl {
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: UIControl.State.normal)
     }
 }
-
-
-
