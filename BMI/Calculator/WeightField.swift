@@ -50,7 +50,9 @@ extension WeightField {
         weightMinusButton.backgroundColor = UIColor.white
         weightMinusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
-        
+        if weightTextField.text?.isEmpty == true {
+            weightTextField.text = defaultWeight
+        }
         let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
         let decreaseWeight: Double = -0.1
         let decreasedWeightResult = defaultWeightNumber + decreaseWeight
@@ -90,7 +92,12 @@ extension WeightField {
         weightPlusButton.backgroundColor = UIColor.white
         weightPlusButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         
+        
+        if weightTextField.text?.isEmpty == true {
+            weightTextField.text = defaultWeight
+        }
         let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
+        
         let increaseWeight: Double = 0.1
         let increasedWeightResult = defaultWeightNumber + increaseWeight
         weightTextField.text = String(format: "%.1f", increasedWeightResult)
@@ -141,6 +148,7 @@ extension WeightField {
     
     @objc func timerDecreaseAction() {
         
+
         let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
         let decreaseWeight: Double = -0.1
         let decreasedWeightResult = defaultWeightNumber + decreaseWeight
@@ -151,6 +159,7 @@ extension WeightField {
     
     @objc func timerIncreaseAction() {
         
+
         let defaultWeightNumber: Double = Double(weightTextField.text!) ?? 0
         let increaseWeight: Double = 0.1
         let increasedWeightResult = defaultWeightNumber + increaseWeight

@@ -193,6 +193,7 @@ class AddTodaysWeightViewController : UIViewController {
     @IBAction func addSpecificDateWeightTouchedDown(_ sender: UIButton) {
         let specificDateValue: Double = Double(specificDateWeightTextField.text ?? "") ?? 0
         addMetric(with: specificDateValue, for: datePicker.date)
+
     }
     
 

@@ -41,11 +41,11 @@
 /* Begin PBXFileReference section */
 		361F257223F9D7A300BDA6BB /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		361F257423F9D7A800BDA6BB /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		36304B6E2440BEAE00F95989 /* Constraints Sizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Constraints Sizer.swift"; path = "../../../Desktop/bmi docs before move on/calc/Constraints Sizer.swift"; sourceTree = "<group>"; };
-		36304B702440BECC00F95989 /* Constraint Sizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Constraint Sizer.swift"; path = "../../Desktop/bmi docs before move on/Constraint Sizer.swift"; sourceTree = "<group>"; };
-		36304B722440BF1500F95989 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = "../../Desktop/bmi docs before move on/MainViewController.swift"; sourceTree = "<group>"; };
-		36304B742440BF3100F95989 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../Desktop/bmi docs before move on/Main.storyboard"; sourceTree = "<group>"; };
-		36304B762440BF4300F95989 /* Calculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Calculator.storyboard; path = "../../../Desktop/bmi docs before move on/calc/Calculator.storyboard"; sourceTree = "<group>"; };
+		36304B6E2440BEAE00F95989 /* Constraints Sizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints Sizer.swift"; sourceTree = "<group>"; };
+		36304B702440BECC00F95989 /* Constraint Sizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraint Sizer.swift"; sourceTree = "<group>"; };
+		36304B722440BF1500F95989 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		36304B742440BF3100F95989 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		36304B762440BF4300F95989 /* Calculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calculator.storyboard; sourceTree = "<group>"; };
 		365896D1231551B700BB65EC /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		365896D32317351400BB65EC /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		365896DD231DA88E00BB65EC /* WeightField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightField.swift; sourceTree = "<group>"; };
